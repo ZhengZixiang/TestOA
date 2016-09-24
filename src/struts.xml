@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.custom.i18n.resources" value="MessageResource" />
+	
+	<package name="oa_01" namespace="/" extends="struts-default">
+		<global-results>
+			<result name="pub_add_success">/common/pub_add_success.jsp</result>
+			<result name="pub_delete_success">/common/pub_delete_success.jsp</result>
+			<result name="pub_update_success">/common/pub_update_success.jsp</result>
+			<result name="error">/common/exception.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="me.zzx.oa.util.SystemException"></exception-mapping>
+		</global-exception-mappings>
+		
+		<action name="org" class="orgAction">
+			<exception-mapping result="error" exception=""></exception-mapping>
+			<result name="add_input">/org/add_input.jsp</result>
+			<result name="update_input">/org/update_input.jsp</result>
+			<result name="index">/org/index.jsp</result>
+		</action>
+	</package>
+
+</struts>

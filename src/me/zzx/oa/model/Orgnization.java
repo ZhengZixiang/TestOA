@@ -67,7 +67,8 @@ public class Orgnization {
 		this.description = description;
 	}
 
-	@ManyToOne(cascade={CascadeType.ALL},
+	//多对一双向关联切勿将cascade设成ALL！
+	@ManyToOne(cascade={CascadeType.MERGE},
 			fetch=FetchType.EAGER
 			)
 	public Orgnization getParent() {

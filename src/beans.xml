@@ -36,6 +36,7 @@
         </property>
         <property name="hibernateProperties">
 	        <props>
+				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
 	        	<prop key="ibernate.current_session_context_class">thread</prop>
 	            <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 	            <prop key="hibernate.show_sql">true</prop>

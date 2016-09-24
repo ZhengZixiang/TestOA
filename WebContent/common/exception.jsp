@@ -9,6 +9,6 @@
 <title>系统出现异常</title>
 </head>
 <body>
-<s:property value="getText('exception.org.delete')"/>
+	<s:property value="getText(exception.message)"/>
 </body>
 </html>

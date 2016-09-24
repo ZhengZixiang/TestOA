@@ -11,6 +11,10 @@
 	<constant name="struts.custom.i18n.resources" value="MessageResource" />
 	
 	<package name="oa_01" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="seInterceptor" class="me.zzx.oa.util.SystemExceptionInterceptor"></interceptor>		
+		</interceptors>
+		
 		<global-results>
 			<result name="pub_add_success">/common/pub_add_success.jsp</result>
 			<result name="pub_delete_success">/common/pub_delete_success.jsp</result>
@@ -23,10 +27,11 @@
 		</global-exception-mappings>
 		
 		<action name="org" class="orgAction">
-			<exception-mapping result="error" exception=""></exception-mapping>
 			<result name="add_input">/org/add_input.jsp</result>
 			<result name="update_input">/org/update_input.jsp</result>
 			<result name="index">/org/index.jsp</result>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
 	</package>
 

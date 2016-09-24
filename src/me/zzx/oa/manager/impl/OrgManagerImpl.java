@@ -29,12 +29,12 @@ public class OrgManagerImpl implements OrgManager{
 	}
 
 	@Override
-	public void deleteOrg(int id) {
+	public void deleteOrg(int id) throws SystemException {
 		Orgnization org = hibernateTemplate.load(Orgnization.class, id);
 		
 		//判断是否存在子机构，若存在，则不允许删除
 		if(org.getChildren().size() > 0) {
-			throw new SystemException("存在子机构，不允许删除！", "exception.org.delete");
+			throw new SystemException("exception.org.delete");
 		}
 		
 		hibernateTemplate.delete(org);

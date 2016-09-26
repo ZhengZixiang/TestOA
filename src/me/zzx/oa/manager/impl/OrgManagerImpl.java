@@ -3,10 +3,15 @@ package me.zzx.oa.manager.impl;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.persistence.Query;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Service;
 
+import me.zzx.oa.dto.Pager;
 import me.zzx.oa.manager.OrgManager;
 import me.zzx.oa.model.Orgnization;
 import me.zzx.oa.util.SystemException;
@@ -55,12 +60,41 @@ public class OrgManagerImpl implements OrgManager{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Orgnization> findOrgs(int parentId) {
+	public Pager findOrgs(int parentId, Pager pager) {
+		
+		String countHql;
+		
 		//如果 parentId 为0，则查找顶级机构列表
 		if(parentId == 0) {
-			return (List<Orgnization>) hibernateTemplate.find(" from Orgnization o where o.parent is null");
+			countHql = "select count(*) from Orgnization o where o.parent is null";
+		} else {
+			countHql = "select count(*) from Orgnization o where o.parent.id is " + parentId;
 		}
-		return (List<Orgnization>) hibernateTemplate.find(" from Orgnization o where o.parent.id = " + parentId);
+		
+		long total = ((List<Long>) hibernateTemplate.find(countHql)).get(0);
+		
+		List<Orgnization> orgs = (List<Orgnization>) hibernateTemplate.execute(
+			new HibernateCallback() {
+				@Override
+				public Object doInHibernate(Session session) throws HibernateException {
+					String selectHql;
+					if(parentId == 0) {
+						selectHql = " from Orgnization o where o.parent is null";
+					} else {
+						selectHql = " from Orgnization o where o.parent.id = " + parentId;
+					}
+					Query query = session.createQuery(selectHql)
+							.setMaxResults(pager.getPagesize())
+							.setFirstResult(pager.getOffset());
+					List<Orgnization> orgs = query.getResultList();
+					return orgs;
+				}				
+			}
+		);
+		
+		pager.setTotal((int)total);
+		pager.setOrgs(orgs);
+		return pager;
 	}
 
 	public HibernateTemplate getHibernateTemplate() {

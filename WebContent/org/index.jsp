@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=GB18030"
 	pageEncoding="utf-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ include file="/common/common.jsp" %>
 
 <html>
 <head>
@@ -72,8 +72,8 @@
 			<td width="18%" height="37" align="center"><b>相关操作</b></td>
 		</tr>
 		<!-- 列表数据栏 -->
-		<s:if test="%{orgs!=null}">
-			<s:iterator value="orgs" id="org">
+		<s:if test="%{pager.orgs!=null}">
+			<s:iterator value="pager.orgs" id="org">
 				<tr bgcolor="#EFF3F7" class="tableBody1"
 					onmouseover="this.bgColor = '#DEE7FF';"
 					onmouseout="this.bgColor='#EFF3F7';">
@@ -89,7 +89,7 @@
 			</s:iterator>
 		</s:if>
 		<!-- 在列表数据为空的时候，要显示的提示信息 -->
-		<s:if test="%{orgs==null || orgs.size() == 0}">
+		<s:if test="%{pager.orgs==null || pager.orgs.size() == 0}">
 			<tr>
 				<td colspan="7" align="center" bgcolor="#EFF3F7" class="tableBody1"
 					onmouseover="this.bgColor = '#DEE7FF';"
@@ -103,11 +103,35 @@
 		<tbody>
 			<tr>
 				<td height=28 align=right vAlign=center noWrap
-					background=images/list_middle.jpg>&nbsp;&nbsp; 可以在这里插入分页导航条
+					background=images/list_middle.jpg>&nbsp;&nbsp; 
+					<!-- 可以在这里插入分页导航条 -->
+					<pg:pager url="org" items="${ pager.total }" export="currentPage=pageNumber">
+						<pg:param name="parentId"/>
+						<pg:first>
+							<a href="<%= pageUrl %>">首页</a>
+						</pg:first>
+						<pg:prev>
+							<a href="<%= pageUrl %>">前一页</a>
+						</pg:prev>
+						<pg:pages>
+							<% if(currentPage != pageNumber) { %>
+								<a href="<%= pageUrl %>"><%= pageNumber %></a>
+							<% } else { %>
+								<b> <%= pageNumber %> </b>
+							<% } %>
+						</pg:pages>
+						<pg:next>
+							<a href="<%= pageUrl %>">后一页</a>
+						</pg:next>
+						<pg:last>
+							<a href="<%= pageUrl %>">尾页</a>
+						</pg:last>
+					</pg:pager>
 				</td>
 			</tr>
 		</tbody>
 	</table>
+	<s:debug></s:debug>
 </body>
 
 </html>

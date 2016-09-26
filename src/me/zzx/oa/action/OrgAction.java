@@ -1,7 +1,5 @@
 package me.zzx.oa.action;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
@@ -9,25 +7,28 @@ import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
+import me.zzx.oa.dto.Pager;
 import me.zzx.oa.manager.OrgManager;
 import me.zzx.oa.model.Orgnization;
 
 @Component("orgAction")
 @Scope("prototype")
-public class OrgAction extends ActionSupport {
+public class OrgAction extends ActionSupport implements ModelDriven<Pager>{
 	
 	private static final long serialVersionUID = 820088832067353574L;
 	private OrgManager orgManager;
-	private List<Orgnization> orgs;
 	private int id;
 	private int parentId;
 	private String name;
 	private String description;
+	private Pager pager = new Pager();
 	
 	@Override
 	public String execute() throws Exception {
-		orgs = orgManager.findOrgs(parentId);
+		orgManager.findOrgs(parentId, pager);
+		
 		if(parentId != 0) {
 			Orgnization org = orgManager.findOrg(parentId);
 			Orgnization parent = org.getParent();
@@ -83,14 +84,6 @@ public class OrgAction extends ActionSupport {
 		return serialVersionUID;
 	}
 
-	public List<Orgnization> getOrgs() {
-		return orgs;
-	}
-
-	public void setOrgs(List<Orgnization> orgs) {
-		this.orgs = orgs;
-	}
-
 	public int getParentId() {
 		return parentId;
 	}
@@ -121,6 +114,19 @@ public class OrgAction extends ActionSupport {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Pager getPager() {
+		return pager;
+	}
+
+	public void setPager(Pager pager) {
+		this.pager = pager;
+	}
+
+	@Override
+	public Pager getModel() {
+		return pager;
 	}
 	
 }

@@ -1,8 +1,7 @@
 package me.zzx.oa.manager;
 
-import java.util.List;
-
 import me.zzx.oa.model.Orgnization;
+import me.zzx.oa.dto.Pager;
 
 public interface OrgManager {
 	
@@ -24,5 +23,5 @@ public interface OrgManager {
 	 * @param parentId
 	 * @return
 	 */
-	public List<Orgnization> findOrgs(int parentId);
+	public Pager findOrgs(int parentId, Pager pager);
 }

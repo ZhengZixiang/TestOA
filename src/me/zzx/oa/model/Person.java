@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +24,8 @@ public class Person {
 	private String phone;
 
 	private String description;
+	
+	private Organization org;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -80,6 +83,15 @@ public class Person {
 	
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@ManyToOne
+	public Organization getOrg() {
+		return org;
+	}
+
+	public void setOrg(Organization org) {
+		this.org = org;
 	}
 
 }

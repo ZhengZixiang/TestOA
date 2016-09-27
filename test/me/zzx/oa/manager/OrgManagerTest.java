@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import me.zzx.oa.manager.impl.OrgManagerImpl;
-import me.zzx.oa.model.Orgnization;
+import me.zzx.oa.model.Organization;
 
 public class OrgManagerTest extends OrgManagerImpl {
 
@@ -21,7 +21,7 @@ public class OrgManagerTest extends OrgManagerImpl {
 	public void testAddOrg() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		OrgManager manager = context.getBean("orgManager", OrgManager.class);
-		Orgnization org = new Orgnization();
+		Organization org = new Organization();
 		org.setName("²âÊÔ»ú¹¹");
 		org.setDescription("test");
 		manager.addOrg(org, 0);

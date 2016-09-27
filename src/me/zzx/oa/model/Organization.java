@@ -19,7 +19,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 @Table(name="t_orgnization")
 
-public class Orgnization {
+public class Organization {
 	
 	private int id;
 	
@@ -29,9 +29,9 @@ public class Orgnization {
 	
 	private String description;
 	
-	private Orgnization parent;
+	private Organization parent;
 	
-	private Set<Orgnization> children = new HashSet<Orgnization>();
+	private Set<Organization> children = new HashSet<Organization>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -71,11 +71,11 @@ public class Orgnization {
 	@ManyToOne(cascade={CascadeType.MERGE},
 			fetch=FetchType.EAGER
 			)
-	public Orgnization getParent() {
+	public Organization getParent() {
 		return parent;
 	}
 
-	public void setParent(Orgnization parent) {
+	public void setParent(Organization parent) {
 		this.parent = parent;
 	}
 
@@ -85,11 +85,11 @@ public class Orgnization {
 			fetch=FetchType.LAZY
 			)
 	@LazyCollection(LazyCollectionOption.EXTRA)
-	public Set<Orgnization> getChildren() {
+	public Set<Organization> getChildren() {
 		return children;
 	}
 
-	public void setChildren(Set<Orgnization> children) {
+	public void setChildren(Set<Organization> children) {
 		this.children = children;
 	}
 	

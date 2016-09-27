@@ -1,6 +1,6 @@
 package me.zzx.oa.manager;
 
-import me.zzx.oa.model.Orgnization;
+import me.zzx.oa.model.Organization;
 import me.zzx.oa.dto.Pager;
 
 public interface OrgManager {
@@ -10,18 +10,18 @@ public interface OrgManager {
 	 * @param org
 	 * @param parentId
 	 */
-	public void addOrg(Orgnization org, int parentId);
+	public void addOrg(Organization org, int parentId);
 	
 	public void deleteOrg(int id);
 	
-	public void updateOrg(Orgnization org, int parentId);
+	public void updateOrg(Organization org, int parentId);
 	
-	public Orgnization findOrg(int id);
+	public Organization findOrg(int id);
 	
 	/**
 	 * 查找机构列表，如果 parentId 为0， 则查找顶级机构列表
 	 * @param parentId
 	 * @return
 	 */
-	public Pager findOrgs(int parentId, Pager pager);
+	public void listByPager(int parentId, Pager pager);
 }

@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import me.zzx.oa.dto.Pager;
 import me.zzx.oa.manager.OrgManager;
-import me.zzx.oa.model.Orgnization;
+import me.zzx.oa.model.Organization;
 
 @Component("orgAction")
 @Scope("prototype")
@@ -27,11 +27,11 @@ public class OrgAction extends ActionSupport implements ModelDriven<Pager>{
 	
 	@Override
 	public String execute() throws Exception {
-		orgManager.findOrgs(parentId, pager);
+		orgManager.listByPager(parentId, pager);
 		
 		if(parentId != 0) {
-			Orgnization org = orgManager.findOrg(parentId);
-			Orgnization parent = org.getParent();
+			Organization org = orgManager.findOrg(parentId);
+			Organization parent = org.getParent();
 			if(parent != null) 
 				//Struts2 request 传参最好的方法
 				ActionContext.getContext().put("ppid", parent.getId());
@@ -44,14 +44,14 @@ public class OrgAction extends ActionSupport implements ModelDriven<Pager>{
 	}
 	
 	public String updateInput() {
-		Orgnization org = orgManager.findOrg(id);
+		Organization org = orgManager.findOrg(id);
 		name = org.getName();
 		description = org.getDescription();
 		return "update_input";
 	}
 	
 	public String save() {
-		Orgnization org = new Orgnization();
+		Organization org = new Organization();
 		org.setName(name);
 		org.setDescription(description);
 		orgManager.addOrg(org, parentId);
@@ -64,7 +64,7 @@ public class OrgAction extends ActionSupport implements ModelDriven<Pager>{
 	}
 
 	public String update() {
-		Orgnization org = orgManager.findOrg(id);
+		Organization org = orgManager.findOrg(id);
 		org.setName(name);
 		org.setDescription(description);
 		orgManager.updateOrg(org, parentId);

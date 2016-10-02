@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +25,8 @@ public class Person {
 	private String phone;
 	
 	private Organization org;
+	
+	private User user;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -75,6 +78,15 @@ public class Person {
 
 	public void setOrg(Organization org) {
 		this.org = org;
+	}
+
+	@OneToOne(mappedBy="person")
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

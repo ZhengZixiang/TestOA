@@ -10,7 +10,7 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.custom.i18n.resources" value="MessageResource" />
 	
-	<package name="oa_01" namespace="/" extends="struts-default">
+	<package name="oa" namespace="/" extends="struts-default">
 		<interceptors>
 			<interceptor name="seInterceptor" class="me.zzx.oa.util.SystemExceptionInterceptor"></interceptor>		
 		</interceptors>
@@ -30,6 +30,15 @@
 			<result name="add_input">/org/add_input.jsp</result>
 			<result name="update_input">/org/update_input.jsp</result>
 			<result name="index">/org/index.jsp</result>
+			<result name="select">/org/select.jsp</result>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="person" class="personAction">
+			<result name="add_input">/person/add_input.jsp</result>
+			<result name="update_input">/person/update_input.jsp</result>
+			<result name="index">/person/index.jsp</result>
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>

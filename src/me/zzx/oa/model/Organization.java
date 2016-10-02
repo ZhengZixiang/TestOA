@@ -1,6 +1,8 @@
 package me.zzx.oa.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -17,8 +19,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
-@Table(name="t_orgnization")
-
+@Table(name="t_organization")
 public class Organization {
 	
 	private int id;
@@ -32,6 +33,8 @@ public class Organization {
 	private Organization parent;
 	
 	private Set<Organization> children = new HashSet<Organization>();
+	
+	private List<Person> persons = new ArrayList<Person>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -92,6 +95,18 @@ public class Organization {
 	public void setChildren(Set<Organization> children) {
 		this.children = children;
 	}
-	
+
+	@OneToMany(mappedBy="org",
+			cascade={CascadeType.ALL},
+			fetch=FetchType.LAZY
+			)
+	@LazyCollection(LazyCollectionOption.EXTRA)
+	public List<Person> getPersons() {
+		return persons;
+	}
+
+	public void setPersons(List<Person> persons) {
+		this.persons = persons;
+	}
 	
 }

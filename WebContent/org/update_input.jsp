@@ -13,7 +13,9 @@
 <body>
 	<center>
 		<form action="org!update" method="post">
-			<input type="hidden" name="id" value="<s:property value="id"/>"/>
+			<input type="hidden" name="org.id" value="<s:property value="org.id"/>"/>
+			<input type="hidden" name="org.sn" value="<s:property value="org.sn"/>"/>
+			<input type="hidden" name="parentId" value="<s:property value="org.parent.id"/>"/>
 			<table class="tableEdit" border="0" cellspacing="1" cellpadding="0"
 				style="width: 580px;">
 				<tbody>
@@ -27,9 +29,9 @@
 								border="0" cellpadding="0">
 								<tr>
 									<td class="tdEditLabel">机构名称</td>
-									<td class="tdEditContent"><input type="text" name="name" value="<s:property value="name"/>"/></td>
+									<td class="tdEditContent"><input type="text" name="org.name" value="<s:property value="org.name"/>"/></td>
 									<td class="tdEditLabel">机构描述</td>
-									<td class="tdEditContent"><input type="text" name="description" value="<s:property value="description"/>"/></td>
+									<td class="tdEditContent"><input type="text" name="org.description" value="<s:property value="org.description"/>"/></td>
 								</tr>
 							</table> <!-- 主输入域结束 -->
 						</td>
@@ -40,7 +42,7 @@
 			<table>
 				<tr align="center">
 					<td colspan="3" bgcolor="#EFF3F7">
-						<input type="submit" name="saveButton" class="MyButton" value="更新机构信息">
+						<input type="submit" class="MyButton" value="更新机构信息">
 						<input type="button" class="MyButton" value="关闭窗口" onclick="window.close()">
 					</td>
 				</tr>

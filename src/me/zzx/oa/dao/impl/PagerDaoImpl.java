@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import me.zzx.oa.dao.PagerDao;
 import me.zzx.oa.dto.Pager;
-import me.zzx.oa.model.Organization;
 import me.zzx.oa.util.SystemException;
 
 @Repository("pagerDao")
@@ -36,7 +35,7 @@ public class PagerDaoImpl implements PagerDao {
 	 * @param pager Pager域模型
 	 */
 	@Override
-	public void searchPaginated(String hql, Object[] values, Pager pager) {
+	public void searchPaginated(String hql, Object[] values, Pager pager) throws SystemException {
 		//获取总记录数
 		String countHql = this.getCountHql(hql);
 		
@@ -47,7 +46,7 @@ public class PagerDaoImpl implements PagerDao {
 				@Override
 				public Object doInHibernate(Session session) throws HibernateException {
 					Query countQuery = session.createQuery(countHql);
-					Query selectQuery = session.createQuery(hql, Organization.class)
+					Query selectQuery = session.createQuery(hql)
 							.setFirstResult(pager.getOffset())
 							.setMaxResults(pager.getPagesize());
 					if(values != null && values.length > 0) {
@@ -57,7 +56,7 @@ public class PagerDaoImpl implements PagerDao {
 						}
 					}
 					pager.setTotal((int)((long)countQuery.getSingleResult()));
-					pager.setOrgs(selectQuery.getResultList());
+					pager.setList(selectQuery.getResultList());
 					return null;
 				}
 		});

@@ -2,22 +2,25 @@ package me.zzx.oa.dto;
 
 import java.util.List;
 
-import me.zzx.oa.model.Organization;
-
 public class Pager {
 	private int total;
-	private List<Organization> orgs;
+	
+	private List<Object> list;
+	
 	private int offset = 0;
+	
 	private int pagesize = 10;
 	
-	public List<Organization> getOrgs() {
-		return orgs;
-	}
+	private boolean select;
 	
-	public void setOrgs(List<Organization> orgs) {
-		this.orgs = orgs;
+	public List<Object> getList() {
+		return list;
 	}
-	
+
+	public void setList(List<Object> list) {
+		this.list = list;
+	}
+
 	public int getTotal() {
 		return total;
 	}
@@ -40,6 +43,14 @@ public class Pager {
 
 	public void setPagesize(int pagesize) {
 		this.pagesize = pagesize;
+	}
+
+	public boolean isSelect() {
+		return select;
+	}
+
+	public void setSelect(boolean select) {
+		this.select = select;
 	}
 	
 }

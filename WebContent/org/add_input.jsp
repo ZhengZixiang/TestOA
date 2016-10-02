@@ -27,9 +27,9 @@
 								border="0" cellpadding="0">
 								<tr>
 									<td class="tdEditLabel">机构名称</td>
-									<td class="tdEditContent"><input type="text" name="name"/></td>
+									<td class="tdEditContent"><input type="text" name="org.name"/></td>
 									<td class="tdEditLabel">机构描述</td>
-									<td class="tdEditContent"><input type="text" name="description"></td>
+									<td class="tdEditContent"><input type="text" name="org.description"></td>
 								</tr>
 							</table> <!-- 主输入域结束 -->
 						</td>
@@ -40,7 +40,7 @@
 			<table>
 				<tr align="center">
 					<td colspan="3" bgcolor="#EFF3F7">
-						<input type="submit" name="saveButton" class="MyButton" value="保存机构信息">
+						<input type="submit" class="MyButton" value="保存机构信息">
 						<input type="button" class="MyButton" value="关闭窗口" onclick="window.close()">
 					</td>
 				</tr>

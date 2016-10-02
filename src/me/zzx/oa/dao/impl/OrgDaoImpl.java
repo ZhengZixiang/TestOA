@@ -9,6 +9,7 @@ import me.zzx.oa.dao.OrgDao;
 import me.zzx.oa.dao.PagerDao;
 import me.zzx.oa.dto.Pager;
 import me.zzx.oa.model.Organization;
+import me.zzx.oa.util.SystemException;
 
 @Repository("orgDao")
 public class OrgDaoImpl implements OrgDao {
@@ -44,11 +45,11 @@ public class OrgDaoImpl implements OrgDao {
 	}
 
 	@Override
-	public void searchOrgs(int parentId, Pager pager) {
+	public void searchOrgs(int parentId, Pager pager) throws SystemException {
 		if(parentId == 0) {
-			pagerDao.searchPaginated("from Orgnization o where o.parent is null", pager);
+			pagerDao.searchPaginated("from Organization o where o.parent is null", pager);
 		} else {
-			pagerDao.searchPaginated("from Orgnization o where o.parent.id = ?", parentId, pager);
+			pagerDao.searchPaginated("from Organization o where o.parent.id = ?", parentId, pager);
 		}
 	}
 

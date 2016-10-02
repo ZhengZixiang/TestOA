@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="style/oa.css" rel="stylesheet" type="text/css">
 <script src="script/public.js"></script>
-<title>机构管理</title>
+<title>人员管理</title>
 </head>
 <body bgColor=#dee7ff leftMargin=0 background="" topMargin=0
 	marginheight="0" marginwidth="0">
@@ -18,7 +18,7 @@
 				<td align=middle width=20 background=images/title_left.gif
 					bgColor=#dee7ff></td>
 				<td align=middle width=120 background=images/title_left.gif
-					bgColor=#dee7ff><FONT color=#f7f7f7>机构管理<font
+					bgColor=#dee7ff><FONT color=#f7f7f7>人员管理<font
 						color="#FFFFFF">&nbsp;</font></FONT></td>
 				<td align=middle width=11 background=images/title_middle.gif
 					bgColor=#dee7ff><FONT color=#f7f7f7>&nbsp;</FONT></td>
@@ -48,10 +48,7 @@
 						* <img src="images/addpic.gif" border=0 align=absMiddle style="CURSOR: hand"></a>
 						*/
 					%>
-					<a href="#" onclick="openWin('org!addInput?parentId=<s:property value="parentId"/>','addOrg',600,200);">添加机构信息</a>
-					<s:if test="parentId!=0">
-						 | <a href="org?parentId=<s:property value="ppid"/>">返回</a>
-					</s:if>
+					<a href="#" onclick="openWin('person!addInput','addPerson',600,200);">添加人员信息</a>
 				</td>
 			</tr>
 			<tr>
@@ -61,29 +58,32 @@
 			</tr>
 		</tbody>
 	</table>
-	<table width="778" border="0" cellPadding="0" cellSpacing="1"
-		bgcolor="#6386d6" style="margin: auto">
+	<table width="778" border="0" cellPadding="0" cellSpacing="1" bgcolor="#6386d6" style="margin: auto">
 		<!-- 列表标题栏 -->
 		<tr bgcolor="#EFF3F7" class="tableBody1">
-			<td width="5%" height="37" align="center"><b>序号</b></td>
-			<td width="18%" height="37" align="center"><b>机构名称</b></td>
-			<td width="18%" height="37" align="center"><b>机构编号</b></td>
-			<td width="18%" height="37" align="center"><b>父机构名称</b></td>
+		    <td width="5%" height="37" align="center"><b>序号</b></td>
+		    <td width="18%" height="37" align="center"><B>姓名</B></td>
+		    <td width="13%" height="37" align="center"><b>性别</b></td>
+		    <td width="18%" height="37" align="center"><b>职位</b></td>
+            <td width="18%" height="37" align="center"><b>电话</b></td>
+            <td width="18%" height="37" align="center"><b>所属机构</b></td>
 			<td width="18%" height="37" align="center"><b>相关操作</b></td>
 		</tr>
 		<!-- 列表数据栏 -->
 		<s:if test="%{pager.list!=null}">
-			<s:iterator value="pager.list" id="org">
+			<s:iterator value="pager.list" id="person">
 				<tr bgcolor="#EFF3F7" class="tableBody1"
 					onmouseover="this.bgColor = '#DEE7FF';"
 					onmouseout="this.bgColor='#EFF3F7';">
-					<td align="center"><s:property value="#org.id"/></td>
-					<td align="center"><a href="org?parentId=<s:property value="#org.id"/>"><s:property value="#org.name"/></a></td>
-					<td align="center"><s:property value="#org.sn"/></td>
-					<td align="center"><s:property value="#org.parent.name"/></td>
+					<td align="center"><s:property value="#person.id"/></td>
+					<td align="center"><s:property value="#person.name"/></td>
+					<td align="center"><s:property value="#person.sex"/></td>
+					<td align="center"><s:property value="#person.duty"/></td>
+					<td align="center"><s:property value="#person.phone"/></td>
+					<td align="center"><s:property value="#person.org.id"/></td>
 					<td align="center">
-						<a href="#" onclick="del('org!delete?org.id=<s:property value="#org.id"/>');">删除</a> | 
-						<a href="#" onclick="openWin('org!updateInput?org.id=<s:property value="#org.id"/>','updateOrg',600,200);">更新</a>
+						<a href="#" onclick="del('person!delete?person.id=<s:property value="#person.id"/>');">删除</a> | 
+						<a href="#" onclick="openWin('person!updateInput?person.id=<s:property value="#person.id"/>','updatePerson',600,200);">更新</a>
 					</td>
 				</tr>
 			</s:iterator>
@@ -96,16 +96,15 @@
 					onmouseout="this.bgColor='#EFF3F7';">没有找到相应的记录</td>
 			</tr>
 		</s:if>
+
 	</table>
-	
-	<table width="778" border=0 align=center cellPadding=0 cellSpacing=0
-		borderColor=#ffffff style="font-size: 10pt">
+	<table width="778" border=0 align=center cellPadding=0 cellSpacing=0 borderColor=#ffffff style="font-size: 10pt">
 		<tbody>
 			<tr>
 				<td height=28 align=right vAlign=center noWrap
 					background=images/list_middle.jpg>&nbsp;&nbsp; 
 					<!-- 可以在这里插入分页导航条 -->
-					<pg:pager url="org" items="${ pager.total }" export="currentPage=pageNumber">
+					<pg:pager url="person" items="${ pager.total }" export="currentPage=pageNumber">
 						<pg:param name="parentId"/>
 						<pg:first>
 							<a href="<%= pageUrl %>">首页</a>

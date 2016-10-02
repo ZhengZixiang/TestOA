@@ -18,11 +18,13 @@ import me.zzx.oa.model.Organization;
 public class OrgAction extends ActionSupport implements ModelDriven<Pager>{
 	
 	private static final long serialVersionUID = 820088832067353574L;
-	private OrgManager orgManager;
-	private int id;
+	
+	private Organization org;
+	
 	private int parentId;
-	private String name;
-	private String description;
+	
+	private OrgManager orgManager;
+
 	private Pager pager = new Pager();
 	
 	@Override
@@ -30,11 +32,15 @@ public class OrgAction extends ActionSupport implements ModelDriven<Pager>{
 		orgManager.listByPager(parentId, pager);
 		
 		if(parentId != 0) {
-			Organization org = orgManager.findOrg(parentId);
-			Organization parent = org.getParent();
+			Organization temp = orgManager.findOrg(parentId);
+			Organization parent = temp.getParent();
 			if(parent != null) 
 				//Struts2 request 传参最好的方法
 				ActionContext.getContext().put("ppid", parent.getId());
+		}
+		
+		if(pager.isSelect()) {
+			return "select";
 		}
 		return "index";
 	}
@@ -44,29 +50,21 @@ public class OrgAction extends ActionSupport implements ModelDriven<Pager>{
 	}
 	
 	public String updateInput() {
-		Organization org = orgManager.findOrg(id);
-		name = org.getName();
-		description = org.getDescription();
+		org = orgManager.findOrg(org.getId());
 		return "update_input";
 	}
 	
 	public String save() {
-		Organization org = new Organization();
-		org.setName(name);
-		org.setDescription(description);
 		orgManager.addOrg(org, parentId);
 		return "pub_add_success";
 	}
 	
 	public String delete() throws Exception {
-		orgManager.deleteOrg(id);
+		orgManager.deleteOrg(org.getId());
 		return "pub_delete_success";
 	}
 
 	public String update() {
-		Organization org = orgManager.findOrg(id);
-		org.setName(name);
-		org.setDescription(description);
 		orgManager.updateOrg(org, parentId);
 		return "pub_update_success";
 	}
@@ -92,30 +90,6 @@ public class OrgAction extends ActionSupport implements ModelDriven<Pager>{
 		this.parentId = parentId;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public Pager getPager() {
 		return pager;
 	}
@@ -127,6 +101,14 @@ public class OrgAction extends ActionSupport implements ModelDriven<Pager>{
 	@Override
 	public Pager getModel() {
 		return pager;
+	}
+
+	public Organization getOrg() {
+		return org;
+	}
+
+	public void setOrg(Organization org) {
+		this.org = org;
 	}
 	
 }

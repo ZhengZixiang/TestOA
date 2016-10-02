@@ -1,6 +1,8 @@
 package me.zzx.oa.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,14 +18,10 @@ public class Person {
 	private String name;
 
 	private String sex;
-	
-	private String address;
 
 	private String duty;
 
 	private String phone;
-
-	private String description;
 	
 	private Organization org;
 	
@@ -53,14 +51,6 @@ public class Person {
 		this.sex = sex;
 	}
 	
-	public String getAddress() {
-		return address;
-	}
-	
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
 	public String getDuty() {
 		return duty;
 	}
@@ -76,16 +66,9 @@ public class Person {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.ALL},
+			fetch=FetchType.EAGER)
 	public Organization getOrg() {
 		return org;
 	}

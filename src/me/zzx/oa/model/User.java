@@ -2,19 +2,19 @@ package me.zzx.oa.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name="t_user")
+@DynamicUpdate(true)
 public class User {
 	
 	/**
@@ -32,6 +32,9 @@ public class User {
 	
 	//账号创建时间
 	private Date createTime;
+	
+	//账号失效时间
+	private Date expireTime;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -73,8 +76,17 @@ public class User {
 		return createTime;
 	}
 
+	@Column(updatable=false)
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public Date getExpireTime() {
+		return expireTime;
+	}
+
+	public void setExpireTime(Date expireTime) {
+		this.expireTime = expireTime;
 	}
 	
 }

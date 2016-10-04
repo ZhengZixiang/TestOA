@@ -56,7 +56,7 @@
 			<table>
 				<tr align="center">
 					<td colspan="3" bgcolor="#EFF3F7">
-						<input type="submit" class="MyButton" value="更新机构信息">
+						<input type="submit" class="MyButton" value="更新人员信息">
 						<input type="button" class="MyButton" value="关闭窗口" onclick="window.close()">
 					</td>
 				</tr>

@@ -1,6 +1,9 @@
 package me.zzx.oa.dao;
 
+import java.util.List;
+
 import me.zzx.oa.dto.Pager;
+import me.zzx.oa.model.Role;
 import me.zzx.oa.model.User;
 import me.zzx.oa.model.UserRoleMapping;
 
@@ -23,5 +26,7 @@ public interface UserDao {
 	public UserRoleMapping findUserRoleMapping(int userId, int roleId);
 
 	public void searchUserRoleMappings(int userId, Pager pager);
+	
+	public List<Role> searchSameUser(int userId);
 
 }

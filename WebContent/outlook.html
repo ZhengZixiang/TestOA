@@ -25,8 +25,8 @@
          }
 </STYLE>
 
-<script src="crossbrowser.js" type="text/javascript"></script>
-<script src="outlook.js" type="text/javascript"></script>
+<script src="script/crossbrowser.js" type="text/javascript"></script>
+<script src="script/outlook.js" type="text/javascript"></script>
 
 <SCRIPT>
 
@@ -40,24 +40,19 @@
   var p
 
   //create first panel
-  p = new createPanel('al', '组织机构');
-  p.addButton('netm.gif','机构管理','parent.main.location="org?parentId=0"');
-  p.addButton('news.gif','人员管理','parent.main.location="person"');
-  p.addButton('word.gif','Word','alert("Word")');
-  p.addButton('peditor.gif','Editor','alert("Editor")');
-  p.addButton('mail.gif','Mail','alert("Mail")');
+  p = new createPanel('al', '组织管理');
+  p.addButton('images/netm.gif','机构管理','parent.main.location="org?parentId=0"');
+  p.addButton('images/news.gif','人员管理','parent.main.location="person"');
   o.addPanel(p);
   
-  p = new createPanel('p','Postf�cher');
-  p.addButton('mail.gif','Mail 2','alert("Mail2")');
-  p.addButton('peditor.gif','Personal<BR>Editor','alert("Personal Editor")');
-  p.addButton('word.gif','Projekte','alert("Projekte")');
-  p.addButton('news.gif','Adresse','alert("Adresse")');
-  p.addButton('mail.gif','Postausgang','alert("Postausgang")');
-  p.addButton('mail.gif','Posteingang','alert("Posteingang")');
-  p.addButton('news.gif','Information aus<BR>erster Hand','alert("Infos")');
-  p.addButton('peditor.gif','Gelbe Post','alert("Gelbe Post")');
-  p.addButton('word.gif','Schreiben','alert("Schreiben")');
+  p = new createPanel('p','权限管理');
+  p.addButton('images/mail.gif','模块管理','parent.main.location="module?parentId=0"');
+  p.addButton('images/peditor.gif','角色管理','parent.main.location="role"');
+  p.addButton('images/word.gif','用户管理','parent.main.location="user"');
+  p.addButton('images/news.gif','Adresse','alert("Adresse")');
+  p.addButton('images/news.gif','Information aus<BR>erster Hand','alert("Infos")');
+  p.addButton('images/peditor.gif','Gelbe Post','alert("Gelbe Post")');
+  p.addButton('images/word.gif','Schreiben','alert("Schreiben")');
   o.addPanel(p);
 
   p = new createPanel('l','Leeres Panel');

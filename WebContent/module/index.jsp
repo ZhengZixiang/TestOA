@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
+<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ include file="/common/common.jsp" %>
 
@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="style/oa.css" rel="stylesheet" type="text/css">
 <script src="script/public.js"></script>
-<title>人员管理</title>
+<title>模块管理</title>
 </head>
 <body bgColor=#dee7ff leftMargin=0 background="" topMargin=0
 	marginheight="0" marginwidth="0">
@@ -18,15 +18,16 @@
 				<td align=middle width=20 background=images/title_left.gif
 					bgColor=#dee7ff></td>
 				<td align=middle width=120 background=images/title_left.gif
-					bgColor=#dee7ff><FONT color=#f7f7f7>人员管理<font
-						color="#FFFFFF">&nbsp;</font></FONT></td>
+					bgColor=#dee7ff><font color=#f7f7f7>模块管理<font
+						color="#FFFFFF">&nbsp;</font></font></td>
 				<td align=middle width=11 background=images/title_middle.gif
-					bgColor=#dee7ff><FONT color=#f7f7f7>&nbsp;</FONT></td>
-				<td align=middle background=images/title_right.gif bgColor=#dee7ff><FONT
-					color=#f7f7f7>&nbsp;</FONT></td>
+					bgColor=#dee7ff><font color=#f7f7f7>&nbsp;</font></td>
+				<td align=middle background=images/title_right.gif bgColor=#dee7ff><font
+					color=#f7f7f7>&nbsp;</font></td>
 			</tr>
 		</tbody>
 	</table>
+	
 	<table width="778" border=0 align=center cellPadding=0 cellSpacing=0
 		borderColor=#ffffff style="font-size: 10pt; margin: auto">
 		<tbody>
@@ -48,7 +49,10 @@
 						* <img src="images/addpic.gif" border=0 align=absMiddle style="CURSOR: hand"></a>
 						*/
 					%>
-					<a href="#" onclick="openWin('person!addInput','addPerson',600,200);">添加人员信息</a>
+					<a href="#" onclick="openWin('module!addInput?parentId=<s:property value="parentId"/>','addModule',600,200);">添加模块信息</a>
+					<s:if test="parentId!=0">
+						 | <a href="module?parentId=<s:property value="ppid"/>">返回</a>
+					</s:if>
 				</td>
 			</tr>
 			<tr>
@@ -58,32 +62,35 @@
 			</tr>
 		</tbody>
 	</table>
-	<table width="778" border="0" cellPadding="0" cellSpacing="1" bgcolor="#6386d6" style="margin: auto">
+	
+	<table width="778" border="0" cellPadding="0" cellSpacing="1"
+		bgcolor="#6386d6" style="margin: auto">
 		<!-- 列表标题栏 -->
 		<tr bgcolor="#EFF3F7" class="tableBody1">
-		    <td width="5%" height="37" align="center"><b>序号</b></td>
-		    <td width="18%" height="37" align="center"><B>姓名</B></td>
-		    <td width="13%" height="37" align="center"><b>性别</b></td>
-		    <td width="18%" height="37" align="center"><b>职位</b></td>
-            <td width="18%" height="37" align="center"><b>电话</b></td>
-            <td width="18%" height="37" align="center"><b>所属机构</b></td>
-			<td width="18%" height="37" align="center"><b>相关操作</b></td>
+			<td width="5%" height="37" align="center"><b>序号</b></td>
+			<td width="15%" height="37" align="center"><b>模块名称</b></td>
+			<td width="15%" height="37" align="center"><b>模块编号</b></td>
+			<td width="15%" height="37" align="center"><b>父模块名称</b></td>
+			<td width="20%" height="37" align="center"><b>模块地址</b></td>
+			<td width="15%" height="37" align="center"><b>排序号</b></td>
+			<td width="15%" height="37" align="center"><b>相关操作</b></td>
 		</tr>
 		<!-- 列表数据栏 -->
+		
 		<s:if test="%{pager.list!=null}">
-			<s:iterator value="pager.list" id="person">
+			<s:iterator value="pager.list" id="module">
 				<tr bgcolor="#EFF3F7" class="tableBody1"
 					onmouseover="this.bgColor = '#DEE7FF';"
 					onmouseout="this.bgColor='#EFF3F7';">
-					<td align="center"><s:property value="#person.id"/></td>
-					<td align="center"><s:property value="#person.name"/></td>
-					<td align="center"><s:property value="#person.sex"/></td>
-					<td align="center"><s:property value="#person.duty"/></td>
-					<td align="center"><s:property value="#person.phone"/></td>
-					<td align="center"><s:property value="#person.org.id"/></td>
+					<td align="center"><s:property value="#module.id"/></td>
+					<td align="center"><a href="module?parentId=<s:property value="#module.id"/>"><s:property value="#module.name"/></a></td>
+					<td align="center"><s:property value="#module.sn"/></td>
+					<td align="center"><s:property value="#module.parent.name"/></td>
+					<td align="center"><s:property value="#module.url"/></td>
+					<td align="center"><s:property value="#module.orderNo"/></td>
 					<td align="center">
-						<a href="#" onclick="del('person!delete?person.id=<s:property value="#person.id"/>');">删除</a> | 
-						<a href="#" onclick="openWin('person!updateInput?person.id=<s:property value="#person.id"/>','updatePerson',600,200);">更新</a>
+						<a href="#" onclick="del('module!delete?module.id=<s:property value="#module.id"/>');">删除</a> | 
+						<a href="#" onclick="openWin('module!updateInput?module.id=<s:property value="#module.id"/>','updateModule',600,200);">更新</a>
 					</td>
 				</tr>
 			</s:iterator>
@@ -96,15 +103,16 @@
 					onmouseout="this.bgColor='#EFF3F7';">没有找到相应的记录</td>
 			</tr>
 		</s:if>
-
 	</table>
-	<table width="778" border=0 align=center cellPadding=0 cellSpacing=0 borderColor=#ffffff style="font-size: 10pt">
+	
+	<table width="778" border=0 align=center cellPadding=0 cellSpacing=0
+		borderColor=#ffffff style="font-size: 10pt">
 		<tbody>
 			<tr>
 				<td height=28 align=right vAlign=center noWrap
 					background=images/list_middle.jpg>&nbsp;&nbsp; 
 					<!-- 可以在这里插入分页导航条 -->
-					<pg:pager url="person" items="${ pager.total }" export="currentPage=pageNumber">
+					<pg:pager url="module" items="${ pager.total }" export="currentPage=pageNumber">
 						<pg:param name="parentId"/>
 						<pg:first>
 							<a href="<%= pageUrl %>">首页</a>

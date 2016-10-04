@@ -42,6 +42,31 @@
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
+		
+		<action name="module" class="moduleAction">
+			<result name="add_input">/module/add_input.jsp</result>
+			<result name="update_input">/module/update_input.jsp</result>
+			<result name="index">/module/index.jsp</result>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="role" class="roleAction">
+			<result name="add_input">/role/add_input.jsp</result>
+			<result name="index">/role/index.jsp</result>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="user" class="userAction">
+			<result name="add_input">/user/add_input.jsp</result>
+			<result name="update_input">/user/update_input.jsp</result>
+			<result name="index">/user/index.jsp</result>
+			<result name="list_ur_mapping">/user/list_ur_mapping.jsp</result>
+			<result name="add_ur_mapping_input">/user/add_ur_mapping_input.jsp</result>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
 	</package>
 
 </struts>

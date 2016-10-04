@@ -131,7 +131,6 @@
 			</tr>
 		</tbody>
 	</table>
-	<s:debug></s:debug>
 </body>
 
 </html>

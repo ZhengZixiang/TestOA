@@ -49,7 +49,7 @@ public class ModuleManagerImpl implements ModuleManager {
 	public void searchModules(int parentId, Pager pager) {
 		moduleDao.searchModules(parentId, pager);
 	}
-
+	
 	public ModuleDao getModuleDao() {
 		return moduleDao;
 	}

@@ -13,7 +13,7 @@ public interface AclManager {
 	 * @param permission
 	 * @param accpeted
 	 */
-	public void addOrUpdatePermission(String principalType, int principalId, int resourceId, int permission, boolean accpeted);
+	public void addOrUpdatePermission(String principalType, int principalId, int resourceId, int permission, boolean accepted);
 	
 	/**
 	 * È¡ÏûÊÚÈ¨

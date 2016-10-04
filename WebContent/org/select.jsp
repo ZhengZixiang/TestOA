@@ -80,7 +80,7 @@
 										onmouseover="this.bgColor = '#DEE7FF';"
 										onmouseout="this.bgColor='#EFF3F7';">
 										<td align="center"><input type="radio" name="orgId"
-											onclick="selectOrg(<s:property value="#org.id"/>, <s:property value="#org.name"/>)" /></td>
+											onclick="selectOrg(<s:property value="#org.id"/>, '<s:property value="#org.name"/>')" /></td>
 										<td align="center"><a href="org?parentId=<s:property value="#org.id"/>&select=true"><s:property value="#org.name" /></a></td>
 										<td align="center"><s:property value="#org.sn" /></td>
 										<td align="center"><s:property value="#org.parent.name" /></td>

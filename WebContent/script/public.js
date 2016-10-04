@@ -1,10 +1,10 @@
 /*
- * ´ò¿ªĞÂ´°¿Ú
- * f:Á´½ÓµØÖ·
- * n:´°¿ÚµÄÃû³Æ
- * w:´°¿ÚµÄ¿í¶È
- * h:´°¿ÚµÄ¸ß¶È
- * s:´°¿ÚÊÇ·ñÓĞ¹ö¶¯Ìõ£¬1£ºÓĞ¹ö¶¯Ìõ£»0£ºÃ»ÓĞ¹ö¶¯Ìõ
+ * æ‰“å¼€æ–°çª—å£
+ * f:é“¾æ¥åœ°å€Ö·
+ * n:çª—å£çš„åç§°
+ * w:çª—å£çš„å®½åº¦
+ * h:çª—å£çš„é«˜åº¦
+ * s:çª—å£æ˜¯å¦æœ‰æ»šåŠ¨æ¡ï¼š1ï¼šæœ‰ï¼Œ0ï¼šæ— 
  */
 function openWin(f,n,w,h,s){
 	sb = s == "1" ? "1" : "0";
@@ -20,12 +20,12 @@ function openWin(f,n,w,h,s){
 }
 
 /*
- * ´ò¿ªÉ¾³ı´°¿Ú
+ * æ‰“å¼€åˆ é™¤çª—å£
  */
 function openDeleteDialog(url,confirmString){
 	var c = confirmString;
 	if(c == null || c == ''){
-		c = "ÄãÈ·ÈÏÒªÉ¾³ı¼ÇÂ¼Âğ£¿";
+		c = "ä½ ç¡®è®¤è¦åˆ é™¤è®°å½•å—";
 	}
 	if(confirm(c)){
 		return window.showModalDialog(url,"window123","dialogHeight:234px;dialogWidth:271px;resizable:no;help:yes;status:no;scroll:no");
@@ -34,7 +34,7 @@ function openDeleteDialog(url,confirmString){
 }
 
 /*
- * É¾³ı¼ÇÂ¼
+ * åˆ é™¤è®°å½•
  */
 function del(url,info){
 	if(openDeleteDialog(url,info)){
@@ -43,7 +43,7 @@ function del(url,info){
 }
 
 /*
- * Ğ£Ñécheckbox
+ * æ ¡éªŒcheckbox
  */
 function checkAll( chkName, checkboxName, pageSize ) {
     var src = event.srcElement;
@@ -85,7 +85,7 @@ function makePages(maxPage, selectedPage, selectName) {
 }
 
 /*
- * Ìæ»»×Ö·û´®
+ * æ›¿æ¢å­—ç¬¦ä¸²
  */
 function replaceStr( str ) {
     var re="/( )/gi";
@@ -97,7 +97,7 @@ function replaceStr( str ) {
 }
 
 /*
- * È¥µô×ó±ß¿Õ¸ñ
+ * å»æ‰å·¦è¾¹ç©ºæ ¼
  */
 function LTrim(str) {
     var whitespace = new String(" \t\n\r");
@@ -113,7 +113,7 @@ function LTrim(str) {
 }
 
 /*
- * È¥µôÓÒ±ß¿Õ¸ñ
+ * å»æ‰å³è¾¹ç©ºæ ¼
  */
 function RTrim(str) {
     var whitespace = new String(" \t\n\r");
@@ -129,7 +129,7 @@ function RTrim(str) {
 }
 
 /*
- * È¥µôÁ½±ß¿Õ¸ñ
+ * å»æ‰ä¸¤è¾¹ç©ºæ ¼
  */
 function Trim(str) {
     return RTrim(LTrim(str));
@@ -168,7 +168,7 @@ function exeValidate( exePath ){
 }
 
 /*
- * ÏÔÊ¾
+ * æ˜¾ç¤º
  */
 function validate_date( exePath ) {
 	 var obj = new ActiveXObject("Microsoft.XMLHTTP");
@@ -184,14 +184,14 @@ function validate_date( exePath ) {
 }
 
 /*
- * Ğ£ÑéÊÇ·ñÊı×Ö
+ * æ ¡éªŒæ˜¯å¦æ•°å­—
  */
 function checkNumber(name, TempS) {
 	for(Count=0;Count<TempS.length;Count++) {
 		TempChar=TempS.substring(Count,Count+1);
 		RefString="0123456789";
 		if (RefString.indexOf(TempChar,0)==-1) {
-			alert("ÇëÊäÈëÊı×Ö");
+			alert("è¯·è¾“å…¥æ•°å­—");
 			eval("document.all." + name).focus();
 			return false;
 		}
@@ -199,7 +199,7 @@ function checkNumber(name, TempS) {
 }
 
 /*
- * ÊÇ·ñÓĞ·Ç·¨×Ö·û
+ * æ˜¯å¦æœ‰éæ³•å­—ç¬¦
  */
 function chksafe(a){
 	fibdn = new Array ("'" ,"\\");
@@ -269,7 +269,7 @@ function chkElements( name, errMsg, max_length, lengthMsg ) {
 }
 
 /*
- * Ğ£Ñé¿Õ×Ö·û´®
+ * æ ¡éªŒç©ºå­—ç¬¦ä¸²
  */
 function checkNullStr(name, msg) {
 	var el_name = eval("document.all."+name);
@@ -282,7 +282,7 @@ function checkNullStr(name, msg) {
 }
 
 /*
- * ÏÔÊ¾ÈÕÆÚ¿Ø¼ş
+ * æ˜¾ç¤ºæ—¥æœŸæ§ä»¶
  */
 function GetDate(nText,para){
 	var v_url = para=="1"?"./common/data.html":"../../common/data.html";
@@ -294,7 +294,7 @@ function GetDate(nText,para){
 }
 
 /*
- * °´±ÈÀıËõĞ¡Í¼Æ¬
+ * æŒ‰æ¯”ä¾‹ç¼©å°å›¾ç‰‡
  */
 function DrawImage(ImgD,iwidth,iheight){
 	var flag=false;
@@ -310,7 +310,7 @@ function DrawImage(ImgD,iwidth,iheight){
 				ImgD.width=image.width; 
 				ImgD.height=image.height;
 			}
-//			ImgD.alt=image.width+"¡Á"+image.height;
+//			ImgD.alt=image.width+"ï¿½ï¿½"+image.height;
 		}else{
 			if(image.height>iheight){ 
 				ImgD.height=iheight;
@@ -319,14 +319,14 @@ function DrawImage(ImgD,iwidth,iheight){
 				ImgD.width=image.width; 
 				ImgD.height=image.height;
 			}
-//			ImgD.alt=image.width+"¡Á"+image.height;
+//			ImgD.alt=image.width+"ï¿½ï¿½"+image.height;
 		}
 	}
 	ImgD.style.visibility = "visible";
 } 
 
 /*
- * »Ø³µ¼ü×ªÎªTab¼ü
+ * å›è½¦é”®è½¬ä¸ºTABé”®
  */
 function enterTab(){
 	if(event.keyCode==13){
@@ -350,18 +350,18 @@ function objectEval(text) {
 }
 
 /*
- * ´ò¿ªÁìµ¼²éÑ¯Ò³Ãæ
- * action	- ²éÑ¯µÄAction
- * method	- µ÷ÓÃµÄ·½·¨
- * title	- ±êÌâmessage
- * name		- Ô±¹¤Ñ¡ÔñÓòµÄname
+ * æ‰“å¼€é¢†å¯¼æŸ¥è¯¢é¡µé¢
+ * action	- æŸ¥è¯¢çš„Action
+ * method	- è°ƒç”¨çš„æ–¹æ³•
+ * title	- æ ‡é¢˜message
+ * name		- å‘˜å·¥é€‰æ‹©åŸŸçš„name
  */
 function openLeaderQuery(action,method,title,name){
 	openWin("../../common/selectStaff.jsp?action="+action+"&method="+method+"&title="+title+"&name="+name,"public_leader_find_page","400","150");
 }
 
 /*
- * µÚÒ»ĞĞ±äÉ«
+ * ç¬¬ä¸€è¡Œå˜è‰²
  */
 function chgColor(){
 	var v_table = document.all["PowerTable"];
@@ -374,7 +374,7 @@ function chgColor(){
 }
 
 /*
- * µÚÒ»ĞĞ±äÉ«
+ * ç¬¬ä¸€è¡Œå˜è‰²
  */
 function chgColor2(){
 	var v_table = document.all["PowerTable"];
@@ -406,7 +406,7 @@ function chgColor2(){
 }
 
 /*
- * Ìí¼ÓÒ³ÃæÔØÈëºó´¥·¢µÄÊÂ¼ş
+ * æ·»åŠ é¡µé¢è½½å…¥åè§¦å‘çš„äº‹ä»¶
  */
 function addLoadEvent(func) {
 	var oldonload = window.onload;
@@ -419,7 +419,7 @@ function addLoadEvent(func) {
 		}
 	}
 }
-//adsName:Ãû³Æ,adsUrl:µØÖ·,sTime:Ê±¼ä(Ğ¡Ê±) add by wujie 2005.12.12
+//adsName:åç§°,adsUrl:åœ°å€Ö·,sTime:æ—¶é—´ï¼ˆå°æ—¶ï¼‰
 function PopAds(adsName,adsUrl,sTime,number,w,h,s)
 {
 	if(document.cookie.indexOf(adsName)==-1)

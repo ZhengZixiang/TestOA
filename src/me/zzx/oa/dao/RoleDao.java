@@ -15,4 +15,6 @@ public interface RoleDao {
 
 	public void searchRoles(Pager pager);
 
+	public Role loadByName(String name);
+
 }

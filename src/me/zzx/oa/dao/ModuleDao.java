@@ -8,6 +8,8 @@ public interface ModuleDao {
 	
 	public Module load(int id);
 
+	public Module loadByName(String name);
+	
 	public void delete(Module module);
 
 	public void update(Module module);

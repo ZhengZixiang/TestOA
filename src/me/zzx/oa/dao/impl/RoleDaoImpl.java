@@ -2,6 +2,7 @@ package me.zzx.oa.dao.impl;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Session;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +28,14 @@ public class RoleDaoImpl implements RoleDao {
 		return hibernateTemplate.load(Role.class, id);
 	}
 
+	@Override
+	public Role loadByName(String name) {
+		Session session = hibernateTemplate.getSessionFactory().getCurrentSession();
+		return session.createQuery("from Role r where r.name = ?", Role.class)
+			.setParameter(0, name)
+			.getSingleResult();
+	}
+	
 	@Override
 	public void delete(Role role) {
 		hibernateTemplate.delete(role);

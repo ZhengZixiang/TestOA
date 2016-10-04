@@ -1,5 +1,6 @@
 package me.zzx.oa.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -26,6 +27,7 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public void save(User user) {
+		user.setCreateTime(new Date());
 		hibernateTemplate.save(user);
 	}
 
@@ -50,7 +52,11 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void update(User user) {
-		hibernateTemplate.update(user);
+		User temp = hibernateTemplate.load(User.class, user.getId());
+		temp.setExpireTime(user.getExpireTime());
+		temp.setUsername(user.getUsername());
+		temp.setPassword(user.getPassword());
+		hibernateTemplate.update(temp);
 	}
 
 	public HibernateTemplate getHibernateTemplate() {
@@ -70,7 +76,7 @@ public class UserDaoImpl implements UserDao {
 			ur = new UserRoleMapping();
 			ur.setOrderNo(orderNo);
 			ur.setUser(hibernateTemplate.load(User.class, userId));
-			ur.setRole(hibernateTemplate.load(Role.class, userId));
+			ur.setRole(hibernateTemplate.load(Role.class, roleId));
 			hibernateTemplate.save(ur);
 		} else {
 			ur.setOrderNo(orderNo);
@@ -105,14 +111,33 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void searchUserRoleMappings(int userId, Pager pager) {
-		String hql = "from UserRoleMapping ur where ur.user.id = ?";
+		String hql = "from UserRoleMapping ur where ur.user.id = ? order by ur.orderNo";
 		pagerDao.searchPaginated(hql, userId, pager);
 	}
+	
+
+	@Override
+	public List<Role> searchSameUser(int userId) {
+		String hql = "select r from UserRoleMapping ur join ur.role r where ur.user.id = ? order by ur.orderNo";
+		List<Role> roles = hibernateTemplate.execute(new HibernateCallback<List<Role>>() {
+
+			@Override
+			public List<Role> doInHibernate(Session session) throws HibernateException {
+				List<Role> list = (List<Role>) session.createQuery(hql, Role.class)
+					.setParameter(0, userId)
+					.getResultList();
+				return list;
+			}
+		});
+		return roles;
+	}
+
 
 	public PagerDao getPagerDao() {
 		return pagerDao;
 	}
 
+	@Resource
 	public void setPagerDao(PagerDao pagerDao) {
 		this.pagerDao = pagerDao;
 	}

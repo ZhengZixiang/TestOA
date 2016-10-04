@@ -2,6 +2,7 @@ package me.zzx.oa.dao.impl;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Session;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +27,14 @@ public class ModuleDaoImpl implements ModuleDao {
 	public Module load(int id) {
 		return hibernateTemplate.load(Module.class, id);
 	}
+	
+	@Override
+	public Module loadByName(String name) {
+		Session session = hibernateTemplate.getSessionFactory().getCurrentSession();
+		return session.createQuery("from Module m where m.name = ?", Module.class)
+			.setParameter(0, name)
+			.getSingleResult();
+	}
 
 	@Override
 	public void delete(Module module) {
@@ -40,7 +49,7 @@ public class ModuleDaoImpl implements ModuleDao {
 	@Override
 	public void searchModules(int parentId, Pager pager) {
 		if(parentId == 0) {
-			pagerDao.searchPaginated("from Module m where m.parent.id is null", pager);
+			pagerDao.searchPaginated("from Module m where m.parent is null", pager);
 		} else {
 			pagerDao.searchPaginated("from Module m where m.parent.id = ?", parentId, pager);
 		}

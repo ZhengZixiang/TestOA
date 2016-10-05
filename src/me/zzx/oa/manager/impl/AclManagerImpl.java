@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Service;
 import me.zzx.oa.dao.AclDao;
 import me.zzx.oa.dao.ModuleDao;
 import me.zzx.oa.dao.UserDao;
+import me.zzx.oa.dto.Record;
 import me.zzx.oa.manager.AclManager;
 import me.zzx.oa.model.AccessControlList;
 import me.zzx.oa.model.Module;
@@ -36,6 +36,7 @@ public class AclManagerImpl implements AclManager {
 		if(acl != null) {
 			acl.setPermission(permission, accepted);
 			aclDao.update(acl);
+			return;
 		}
 		
 		acl = new AccessControlList();
@@ -47,12 +48,13 @@ public class AclManagerImpl implements AclManager {
 	}
 	
 	@Override
-	public void addOrUpdateUserExtends(int userId, int resourceId, boolean yes) {
+	public void addOrUpdateExtends(int userId, int resourceId, boolean yes) {
 		AccessControlList acl = this.find(AccessControlList.TYPE_USER, userId, resourceId);
 		
 		if(acl != null) {
 			acl.setExtends(yes);
 			aclDao.update(acl);
+			return;
 		}
 		
 		acl = new AccessControlList();
@@ -149,6 +151,11 @@ public class AclManagerImpl implements AclManager {
 		return aclDao.findByExample(acl);
 	}
 
+	@Override
+	public List<Record> searchAclRecord(String principalType, int principalId) {
+		return aclDao.searchAclRecord(principalType, principalId);
+	}
+	
 	public AclDao getAclDao() {
 		return aclDao;
 	}

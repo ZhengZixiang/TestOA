@@ -66,7 +66,7 @@
 					<td align="center"><s:property value="#role.name"/></td>
 					<td align="center">
 						<a href="#" onclick="del('role!delete?role.id=<s:property value="#role.id"/>');">删除角色</a> | 
-						<a href="#" onclick="openWin('role!updateInput?role.id=<s:property value="#role.id"/>','updaterole',600,200);">角色授权</a>
+						<a href="#" onclick="openWin('acl?acl.principalType=role&acl.principalId=<s:property value="#role.id"/>');">角色授权</a>
 					</td>
 				</tr>
 			</s:iterator>

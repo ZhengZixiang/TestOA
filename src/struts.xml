@@ -67,6 +67,12 @@
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
+		
+		<action name="acl" class="aclAction">
+			<result name="index">/acl/authorize.jsp</result>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
 	</package>
 
 </struts>

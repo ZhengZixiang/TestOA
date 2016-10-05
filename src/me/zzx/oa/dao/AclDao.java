@@ -2,6 +2,7 @@ package me.zzx.oa.dao;
 
 import java.util.List;
 
+import me.zzx.oa.dto.Record;
 import me.zzx.oa.model.AccessControlList;
 
 public interface AclDao {
@@ -15,4 +16,6 @@ public interface AclDao {
 	public void delete(AccessControlList acl);
 
 	public List<AccessControlList> findByExample(AccessControlList acl);
+
+	public List<Record> searchAclRecord(String principalType, int principalId);
 }

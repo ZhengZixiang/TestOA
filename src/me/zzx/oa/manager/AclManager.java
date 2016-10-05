@@ -2,6 +2,8 @@ package me.zzx.oa.manager;
 
 import java.util.List;
 
+import me.zzx.oa.dto.Record;
+import me.zzx.oa.model.AccessControlList;
 import me.zzx.oa.model.Module;
 
 public interface AclManager {
@@ -29,7 +31,7 @@ public interface AclManager {
 	 * @param resourceId
 	 * @param yes
 	 */
-	public void addOrUpdateUserExtends(int userId, int resourceId, boolean yes);
+	public void addOrUpdateExtends(int userId, int resourceId, boolean yes);
 	
 	/**
 	 * 认证，判断用户是否拥有某模块的某操作的权限
@@ -46,4 +48,12 @@ public interface AclManager {
 	 * @return 模块列表
 	 */
 	public List<Module> searchModules(int userId);
+	
+	/**
+	 * 根据主体类型和主体标识查找主体的授权记录
+	 * @param principalType
+	 * @param principalId
+	 * @return
+	 */
+	public List<Record> searchAclRecord(String principalType, int principalId);
 }

@@ -51,11 +51,11 @@
 		<tr bgcolor="#EFF3F7" class="tableBody1">
 		    <td width="5%" height="37" align="center"><b>序号</b></td>
 		    <td width="10%" height="37" align="center"><B>姓名</B></td>
-		    <td width="10%" height="37" align="center"><b>性别</b></td>
+		    <td width="5%" height="37" align="center"><b>性别</b></td>
             <td width="10%" height="37" align="center"><b>所属机构</b></td>
             <td width="10%" height="37" align="center"><b>登录账号</b></td>
             <td width="15%" height="37" align="center"><b>失效时间</b></td>
-			<td width="40%" height="37" align="center"><b>相关操作</b></td>
+			<td width="45%" height="37" align="center"><b>相关操作</b></td>
 		</tr>
 		<!-- 列表数据栏 -->
 		<s:if test="%{pager.list!=null}">
@@ -77,7 +77,8 @@
 						<a href="#" onclick="openWin('user!addInput?person.id=<s:property value="#person.id"/>');">分配账号</a> |
 						<a href="#" onclick="del('user!delete?user.id=<s:property value="#person.user.id"/>');">删除账号</a> | 
 						<a href="#" onclick="openWin('user!updateInput?user.id=<s:property value="#person.user.id"/>&person.id=<s:property value="#person.id"/>');">修改账号</a> |
-						<a href="#" onclick="openWin('user!listURMapping?user.id=<s:property value="#person.user.id"/>','listURMapiing',600,200);">分配角色</a>
+						<a href="#" onclick="openWin('user!listURMapping?user.id=<s:property value="#person.user.id"/>','listURMapiing',600,200);">分配角色</a> | 
+						<a href="#" onclick="openWin('acl?acl.principalType=user&acl.principalId=<s:property value="#person.user.id"/>')">用户授权</a>
 					</td>
 				</tr>
 			</s:iterator>

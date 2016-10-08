@@ -66,8 +66,14 @@ public class AclDaoImpl implements AclDao {
 	}
 
 	@Override
-	public List<AccessControlList> findByExample(AccessControlList acl) {
-		return hibernateTemplate.findByExample(acl);
+	public List<AccessControlList> findByPrincipal(String principalType, int principalId) {
+		String hql = "from AccessControlList acl where ( principalType = :var1 ) and (principalId = :var2 )";
+		Session session = hibernateTemplate.getSessionFactory().getCurrentSession();
+		List<AccessControlList> list = session.createQuery(hql, AccessControlList.class)
+				.setParameter("var1", principalType)
+				.setParameter("var2", principalId)
+				.getResultList();
+		return list;
 	}
 
 }

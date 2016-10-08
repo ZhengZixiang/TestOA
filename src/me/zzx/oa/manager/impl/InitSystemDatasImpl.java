@@ -19,6 +19,7 @@ import me.zzx.oa.dao.OrgDao;
 import me.zzx.oa.dao.PersonDao;
 import me.zzx.oa.dao.RoleDao;
 import me.zzx.oa.dao.UserDao;
+import me.zzx.oa.interceptor.SystemExceptionInterceptor;
 import me.zzx.oa.manager.InitSystemDatas;
 import me.zzx.oa.model.AccessControlList;
 import me.zzx.oa.model.Module;
@@ -28,7 +29,6 @@ import me.zzx.oa.model.Person;
 import me.zzx.oa.model.Role;
 import me.zzx.oa.model.User;
 import me.zzx.oa.util.SystemException;
-import me.zzx.oa.util.SystemExceptionInterceptor;
 
 @Service("initSystemDatas")
 public class InitSystemDatasImpl implements InitSystemDatas {

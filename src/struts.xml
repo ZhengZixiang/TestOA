@@ -12,7 +12,14 @@
 	
 	<package name="oa" namespace="/" extends="struts-default">
 		<interceptors>
-			<interceptor name="seInterceptor" class="me.zzx.oa.util.SystemExceptionInterceptor"></interceptor>		
+			<interceptor name="seInterceptor" class="me.zzx.oa.interceptor.SystemExceptionInterceptor"></interceptor>
+			<interceptor name="loginInterceptor" class="me.zzx.oa.interceptor.LoginInterceptor"></interceptor>
+			
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="loginInterceptor">
+					<param name="excludeMethods">login</param>
+				</interceptor-ref>
+			</interceptor-stack>
 		</interceptors>
 		
 		<global-results>
@@ -20,6 +27,7 @@
 			<result name="pub_delete_success">/common/pub_delete_success.jsp</result>
 			<result name="pub_update_success">/common/pub_update_success.jsp</result>
 			<result name="error">/common/exception.jsp</result>
+			<result name="login" type="redirect">/index.jsp</result>
 		</global-results>
 		
 		<global-exception-mappings>
@@ -31,14 +39,16 @@
 			<result name="update_input">/org/update_input.jsp</result>
 			<result name="index">/org/index.jsp</result>
 			<result name="select">/org/select.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>			
 		</action>
 		
 		<action name="person" class="personAction">
 			<result name="add_input">/person/add_input.jsp</result>
 			<result name="update_input">/person/update_input.jsp</result>
 			<result name="index">/person/index.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
@@ -47,6 +57,7 @@
 			<result name="add_input">/module/add_input.jsp</result>
 			<result name="update_input">/module/update_input.jsp</result>
 			<result name="index">/module/index.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
@@ -54,6 +65,7 @@
 		<action name="role" class="roleAction">
 			<result name="add_input">/role/add_input.jsp</result>
 			<result name="index">/role/index.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
@@ -64,12 +76,28 @@
 			<result name="index">/user/index.jsp</result>
 			<result name="list_ur_mapping">/user/list_ur_mapping.jsp</result>
 			<result name="add_ur_mapping_input">/user/add_ur_mapping_input.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
 		
 		<action name="acl" class="aclAction">
 			<result name="index">/acl/authorize.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="login" class="loginAction">
+			<result name="back_index">/back_index.jsp</result>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="index" class="indexAction">
+			<result name="outlook">/outlook.jsp</result>
+			<result name="main">/main.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>

@@ -48,7 +48,9 @@
 						* <img src="images/addpic.gif" border=0 align=absMiddle style="CURSOR: hand"></a>
 						*/
 					%>
+					<c:if test="${ mytag:hasPermission(login.id, 'person', 0) }">
 					<a href="#" onclick="openWin('person!addInput','addPerson',600,200);">添加人员信息</a>
+					</c:if> 
 				</td>
 			</tr>
 			<tr>
@@ -80,10 +82,14 @@
 					<td align="center"><s:property value="#person.sex"/></td>
 					<td align="center"><s:property value="#person.duty"/></td>
 					<td align="center"><s:property value="#person.phone"/></td>
-					<td align="center"><s:property value="#person.org.id"/></td>
+					<td align="center"><s:property value="#person.org.name"/></td>
 					<td align="center">
-						<a href="#" onclick="del('person!delete?person.id=<s:property value="#person.id"/>');">删除</a> | 
+						<c:if test="${ mytag:hasPermission(login.id, 'person', 2) }">
 						<a href="#" onclick="openWin('person!updateInput?person.id=<s:property value="#person.id"/>','updatePerson',600,200);">更新</a>
+						</c:if> 
+						<c:if test="${ mytag:hasPermission(login.id, 'person', 3) }">
+						 | <a href="#" onclick="del('person!delete?person.id=<s:property value="#person.id"/>')">删除</a>
+						</c:if>
 					</td>
 				</tr>
 			</s:iterator>

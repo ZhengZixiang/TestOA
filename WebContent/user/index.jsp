@@ -74,11 +74,19 @@
 						</s:if>
 					</td>
 					<td align="center">
-						<a href="#" onclick="openWin('user!addInput?person.id=<s:property value="#person.id"/>');">分配账号</a> |
-						<a href="#" onclick="del('user!delete?user.id=<s:property value="#person.user.id"/>');">删除账号</a> | 
-						<a href="#" onclick="openWin('user!updateInput?user.id=<s:property value="#person.user.id"/>&person.id=<s:property value="#person.id"/>');">修改账号</a> |
-						<a href="#" onclick="openWin('user!listURMapping?user.id=<s:property value="#person.user.id"/>','listURMapiing',600,200);">分配角色</a> | 
+						<c:if test="${ mytag:hasPermission(login.id, 'user', 0) }">
+						<a href="#" onclick="openWin('user!addInput?person.id=<s:property value="#person.id"/>');">分配账号</a>&nbsp;
+						</c:if>
+						<c:if test="${ mytag:hasPermission(login.id, 'user', 3) }">
+						<a href="#" onclick="del('user!delete?user.id=<s:property value="#person.user.id"/>');">删除账号</a>&nbsp;
+						</c:if> 
+						<c:if test="${ mytag:hasPermission(login.id, 'user', 2) }">
+						<a href="#" onclick="openWin('user!updateInput?user.id=<s:property value="#person.user.id"/>&person.id=<s:property value="#person.id"/>');">修改账号</a>&nbsp;
+						</c:if>
+						<a href="#" onclick="openWin('user!listURMapping?user.id=<s:property value="#person.user.id"/>','listURMapiing',600,200);">分配角色</a>&nbsp;
+						<c:if test="${ mytag:hasPermission(login.id, 'user', 2) }">
 						<a href="#" onclick="openWin('acl?acl.principalType=user&acl.principalId=<s:property value="#person.user.id"/>')">用户授权</a>
+						</c:if> 
 					</td>
 				</tr>
 			</s:iterator>
@@ -99,7 +107,7 @@
 				<td height=28 align=right vAlign=center noWrap
 					background=images/list_middle.jpg>&nbsp;&nbsp; 
 					<!-- 可以在这里插入分页导航条 -->
-					<pg:pager url="person" items="${ pager.total }" export="currentPage=pageNumber">
+					<pg:pager url="user" items="${ pager.total }" export="currentPage=pageNumber">
 						<pg:param name="parentId"/>
 						<pg:first>
 							<a href="<%= pageUrl %>">首页</a>

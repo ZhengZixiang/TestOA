@@ -53,7 +53,6 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	
 	<!-- 实际开发中用XML配置transaction更多，便于统一一次性添加管理 -->
 	<aop:config>
 		<aop:pointcut expression="execution(public * me.zzx.oa.manager..*.*(..))" id="servicePointcut"/>

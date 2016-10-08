@@ -1,4 +1,4 @@
-<HTML>
+<html>
 <!--
  ---------------------------------------------------------------------------
  this script is copyright (c) 2001 by Michael Wallner!
@@ -13,13 +13,13 @@
  ---------------------------------------------------------------------------
 -->
 <head>
-<meta HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
 <title>Outlook Like Bar Example - (c) 2001 www.wallner-software.com</title>
 </head>
 
   <frameset  cols = "130,*" frameborder=yes bordercolor=silver>
-     <frame SRC="outlook.html" NAME="Links" SCROLLING="No">
-     <frame SRC="main.html" NAME="main" SCROLLING="AUTO">
+     <frame src="index!outlook" name="links" scrolling="no"/>
+     <frame src="index!main" name="main" scrolling="auto"/>
   </frameset> 
 
 <noframes>
@@ -28,4 +28,4 @@
 
 </noframes>
 
-</HTML>
+</html>

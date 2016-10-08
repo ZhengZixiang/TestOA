@@ -29,6 +29,7 @@ public class ModuleAction extends ActionSupport implements ModelDriven<Pager>{
 	
 	@Override
 	public String execute() throws Exception {
+		
 		moduleManager.searchModules(parentId, pager);
 		
 		if(parentId != 0) {

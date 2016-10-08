@@ -38,7 +38,9 @@
 				<td height=14 align=right vAlign=center noWrap>
 				</td>
 				<td height=14 align="left" vAlign=center noWrap>
+					<c:if test="${ mytag:hasPermission(login.id, 'role', 2) }">
 					<a href="#" onclick="openWin('role!addInput','addrole',600,200);">添加角色信息</a>
+					</c:if>
 				</td>
 			</tr>
 			<tr>
@@ -65,8 +67,12 @@
 					<td align="center"><s:property value="#role.id"/></td>
 					<td align="center"><s:property value="#role.name"/></td>
 					<td align="center">
-						<a href="#" onclick="del('role!delete?role.id=<s:property value="#role.id"/>');">删除角色</a> | 
+						<c:if test="${ mytag:hasPermission(login.id, 'role', 2) }">
 						<a href="#" onclick="openWin('acl?acl.principalType=role&acl.principalId=<s:property value="#role.id"/>');">角色授权</a>
+						</c:if>
+						<c:if test="${ mytag:hasPermission(login.id, 'role', 3) }">
+						 | <a href="#" onclick="del('role!delete?role.id=<s:property value="#role.id"/>');">删除角色</a>
+						</c:if>   
 					</td>
 				</tr>
 			</s:iterator>

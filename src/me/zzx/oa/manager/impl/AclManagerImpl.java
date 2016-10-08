@@ -98,7 +98,13 @@ public class AclManagerImpl implements AclManager {
 		return false;
 	}
 
-	//TODO
+	
+	@Override
+	public boolean hasPermission(int userId, String resourceSn, int permission) {
+		Module module = this.moduleDao.loadBySn(resourceSn);
+		return this.hasPermission(userId, module.getId(), permission);
+	}
+
 	@Override
 	public List<Module> searchModules(int userId) {
 		Map<Integer, AccessControlList> map = new HashMap<Integer, AccessControlList>();
@@ -108,14 +114,14 @@ public class AclManagerImpl implements AclManager {
 		
 		//依次获得角色的授权列表
 		for(int i = roles.size() - 1; i > -1; i--) {
-			List<AccessControlList> acls = this.findByResource(AccessControlList.TYPE_ROLE, roles.get(i).getId());
+			List<AccessControlList> acls = this.findByPrincipal(AccessControlList.TYPE_ROLE, roles.get(i).getId());
 			for(AccessControlList acl : acls) {
 				map.put(acl.getResourceId(), acl);
 			}
 		}
 		
 		//查找直接授予用户的授权列表(若是继承的话，则不应该包含在该列表中）
-		List<AccessControlList> acls = this.findByResource(AccessControlList.TYPE_USER, userId);
+		List<AccessControlList> acls = this.findByPrincipal(AccessControlList.TYPE_USER, userId);
 		for(AccessControlList acl : acls) {
 			map.put(acl.getResourceId(), acl);
 		}
@@ -143,12 +149,8 @@ public class AclManagerImpl implements AclManager {
 		return modules;
 	}
 	
-	private List<AccessControlList> findByResource(String principalType, int principalId) {
-		AccessControlList acl = new AccessControlList();
-		if(principalType.equals(AccessControlList.TYPE_USER)) acl.setAclTriState(0);
-		acl.setPrincipalType(principalType);
-		acl.setPrincipalId(principalId);
-		return aclDao.findByExample(acl);
+	private List<AccessControlList> findByPrincipal(String principalType, int principalId) {
+		return aclDao.findByPrincipal(principalType, principalId);
 	}
 
 	@Override

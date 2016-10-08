@@ -37,6 +37,14 @@ public class ModuleDaoImpl implements ModuleDao {
 	}
 
 	@Override
+	public Module loadBySn(String sn) {
+		Session session = hibernateTemplate.getSessionFactory().getCurrentSession();
+		return session.createQuery("from Module m where m.sn = ?", Module.class)
+			.setParameter(0, sn)
+			.getSingleResult();
+	}
+
+	@Override
 	public void delete(Module module) {
 		hibernateTemplate.delete(module);
 	}

@@ -15,7 +15,7 @@ public interface AclDao {
 
 	public void delete(AccessControlList acl);
 
-	public List<AccessControlList> findByExample(AccessControlList acl);
-
 	public List<Record> searchAclRecord(String principalType, int principalId);
+
+	public List<AccessControlList> findByPrincipal(String principalType, int principalId);
 }

@@ -38,9 +38,10 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User load(String username) {
-		User user = new User();
-		user.setUsername(username);
-		List<User> list = hibernateTemplate.findByExample(user);
+		String hql = "from User u where u.username = :var";
+		List<User> list = hibernateTemplate.getSessionFactory().getCurrentSession()
+				.createQuery(hql, User.class).setParameter("var", username)
+				.getResultList();
 		if(list.size() == 0) return null;
 		return list.get(0);
 	}

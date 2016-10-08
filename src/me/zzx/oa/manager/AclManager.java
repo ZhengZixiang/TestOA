@@ -3,7 +3,6 @@ package me.zzx.oa.manager;
 import java.util.List;
 
 import me.zzx.oa.dto.Record;
-import me.zzx.oa.model.AccessControlList;
 import me.zzx.oa.model.Module;
 
 public interface AclManager {
@@ -36,11 +35,20 @@ public interface AclManager {
 	/**
 	 * 认证，判断用户是否拥有某模块的某操作的权限
 	 * @param userId 用户ID
-	 * @param resourceId 资源标识
+	 * @param resourceId 资源序列号
 	 * @param permission CRUD权限
 	 * @return 允许true/不允许false
 	 */
 	public boolean hasPermission(int userId, int resourceId, int permission);
+	
+	/**
+	 * 认证，判断用户是否拥有某模块的某操作的权限
+	 * @param userId 用户ID
+	 * @param resourceId 资源唯一标识
+	 * @param permission CRUD权限
+	 * @return 允许true/不允许false
+	 */
+	public boolean hasPermission(int userId, String resourceSn, int permission);
 	
 	/**
 	 * 搜索用户拥有读取权限的模块列表，用于形成导航菜单

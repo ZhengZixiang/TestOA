@@ -23,7 +23,7 @@
 // ---------------------------------------------------------------------------
 
 //add one button to a panel
-//einen Button zu einem Panel hinzufügen
+//einen Button zu einem Panel hinzufï¿½gen
 //img:    image name - Name der Bilddatei
 //label:  button caption - Beschriftung des Buttons
 //action: javascript on MouseUp event - Javascript beim onMouseUp event
@@ -37,7 +37,7 @@ function b_addButton(img, label, action) {
 }
 
 //reset all panel buttons  (ns4, op5)
-//alle Panel Buttons zurücksetzten (ns4, op5)
+//alle Panel Buttons zurï¿½cksetzten (ns4, op5)
 function b_clear() {
 var i
   for (i=0;i<this.sta.length;i++) {
@@ -397,14 +397,14 @@ var c=0;
        document.write('<Layer visibility=hide top=40 left='+(this.width-20));
        document.write('><A href="#" onClick="'+this.panels[i].v+'.down(16);" ');
        document.write('onmouseOver="'+this.panels[i].v+'.clear();"><img ');
-       document.write('width=16 height=16 src=arrowup.gif border=0>');
+       document.write('width=16 height=16 src=images/arrowup.gif border=0>');
        document.write('</A></LAYER><Layer top=');
        document.write((this.height-(this.panels.length)*28)+'<Layer top=');
        document.write((this.height-(this.panels.length)*28)+' left=');
        document.write((this.width-20)+'><A href="#" onClick="');
        document.write(this.panels[i].v+'.up(16);" onmouseOver="');
        document.write(this.panels[i].v+'.clear();"><img width=16 height=16 ');
-       document.write('src=arrowdown.gif border=0></A></LAYER>');
+       document.write('src=images/arrowdown.gif border=0></A></LAYER>');
 
       document.write('</LAYER>');
     }
@@ -502,7 +502,7 @@ var c=0;
       document.write((this.width-20)+';"><A href="#" onClick="');
       document.write(this.panels[i].v+'.down(16);this.blur();return false;" ');
       document.write('onmouseOver="'+this.panels[i].v+'.clear();">');
-      document.write('<img width=16 height=16 src=arrowup.gif border=0>');
+      document.write('<img width=16 height=16 src=images/arrowup.gif border=0>');
       document.write('</A></DIV>');
       document.write('<DIV id='+this.name+'_panel'+i);
       document.write('_m2 style="position:absolute;  top:');
@@ -510,7 +510,7 @@ var c=0;
       document.write((this.width-20)+';"><A href="#" onClick="');
       document.write(this.panels[i].v+'.up(16);this.blur();return false" ');
       document.write('onmouseOver="'+this.panels[i].v+'.clear();">');
-      document.write('<img width=16 height=16 src=arrowdown.gif border=0>');
+      document.write('<img width=16 height=16 src=images/arrowdown.gif border=0>');
       document.write('</A></DIV>');
 
 
@@ -521,9 +521,9 @@ var c=0;
     //op5 doesn't support layer clipping! so use top layers for panel caption
     //and two top layers with background-color like page color to hide
     //panel content outside of the outlookbar.
-    //op5 unterstützt kein Clip bei Layers! darum erzeugen wir drei top level
-    //layers für die Panel Überschrift und zwei top Layers mit der gleichen
-    //Hintergrundfarbe wie die HTML Seite um den Panel Inhalt außerhalb des
+    //op5 unterstï¿½tzt kein Clip bei Layers! darum erzeugen wir drei top level
+    //layers fï¿½r die Panel ï¿½berschrift und zwei top Layers mit der gleichen
+    //Hintergrundfarbe wie die HTML Seite um den Panel Inhalt auï¿½erhalb des
     //Outlook Bars zu verdecken!
     if (bt.op5) {
       //one layers for panel captions if op5

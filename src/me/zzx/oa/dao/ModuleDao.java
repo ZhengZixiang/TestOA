@@ -10,6 +10,8 @@ public interface ModuleDao {
 
 	public Module loadByName(String name);
 	
+	public Module loadBySn(String sn);
+	
 	public void delete(Module module);
 
 	public void update(Module module);

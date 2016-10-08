@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="/common/common.jsp" %>
+
 <HTML>
 <!--
  ---------------------------------------------------------------------------
@@ -64,7 +68,7 @@
   o.addPanel(p);
 <SPAN style="color:darkgreen">
   //create second panel...</SPAN>
-  p = new createPanel('p','Postfächer');
+  p = new createPanel('p','Postfï¿½cher');
   p.addButton('mail.gif','Mail 2','alert("Mail2")');
   p.addButton('peditor.gif','Personal&lt;BR&gt;Editor','alert("Personal Editor")');
   p.addButton('word.gif','Projekte','alert("Projekte")');
@@ -96,8 +100,6 @@ function resize_op5() {
     var s = new createPageSize();
     if ((screenSize.width!=s.width) || (screenSize.height!=s.height)) {
       screenSize=new createPageSize();
-      //need setTimeout or resize on window-maximize will not work correct!
-      //benötige das setTimeout oder das Maximieren funktioniert nicht richtig
       setTimeout("o.resize(0,0,screenSize.width,screenSize.height)",100);
     }
     setTimeout("resize_op5()",100);

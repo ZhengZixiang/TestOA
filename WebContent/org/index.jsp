@@ -48,7 +48,9 @@
 						* <img src="images/addpic.gif" border=0 align=absMiddle style="CURSOR: hand"></a>
 						*/
 					%>
+					<c:if test="${ mytag:hasPermission(login.id, 'org', 0) }">
 					<a href="#" onclick="openWin('org!addInput?parentId=<s:property value="parentId"/>','addOrg',600,200);">添加机构信息</a>
+					</c:if> 
 					<s:if test="parentId!=0">
 						 | <a href="org?parentId=<s:property value="ppid"/>">返回</a>
 					</s:if>
@@ -81,9 +83,13 @@
 					<td align="center"><a href="org?parentId=<s:property value="#org.id"/>"><s:property value="#org.name"/></a></td>
 					<td align="center"><s:property value="#org.sn"/></td>
 					<td align="center"><s:property value="#org.parent.name"/></td>
-					<td align="center">
-						<a href="#" onclick="del('org!delete?org.id=<s:property value="#org.id"/>');">删除</a> | 
+					<td align="center"> 
+						<c:if test="${ mytag:hasPermission(login.id, 'org', 2) }">
 						<a href="#" onclick="openWin('org!updateInput?org.id=<s:property value="#org.id"/>','updateOrg',600,200);">更新</a>
+						</c:if>
+						<c:if test="${ mytag:hasPermission(login.id, 'org', 3) }">
+						 | <a href="#" onclick="del('org!delete?org.id=<s:property value="#org.id"/>');">删除</a>
+						</c:if>  
 					</td>
 				</tr>
 			</s:iterator>

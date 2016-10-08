@@ -49,7 +49,9 @@
 						* <img src="images/addpic.gif" border=0 align=absMiddle style="CURSOR: hand"></a>
 						*/
 					%>
+					<c:if test="${ mytag:hasPermission(login.id, 'module', 0) }">
 					<a href="#" onclick="openWin('module!addInput?parentId=<s:property value="parentId"/>','addModule',600,200);">添加模块信息</a>
+					</c:if> 
 					<s:if test="parentId!=0">
 						 | <a href="module?parentId=<s:property value="ppid"/>">返回</a>
 					</s:if>
@@ -89,8 +91,12 @@
 					<td align="center"><s:property value="#module.url"/></td>
 					<td align="center"><s:property value="#module.orderNo"/></td>
 					<td align="center">
-						<a href="#" onclick="del('module!delete?module.id=<s:property value="#module.id"/>');">删除</a> | 
+						<c:if test="${ mytag:hasPermission(login.id, 'module', 2) }">
 						<a href="#" onclick="openWin('module!updateInput?module.id=<s:property value="#module.id"/>','updateModule',600,200);">更新</a>
+						</c:if>
+						<c:if test="${ mytag:hasPermission(login.id, 'module', 3) }">
+						 | <a href="#" onclick="del('module!delete?module.id=<s:property value="#module.id"/>');">删除</a>
+						</c:if>
 					</td>
 				</tr>
 			</s:iterator>

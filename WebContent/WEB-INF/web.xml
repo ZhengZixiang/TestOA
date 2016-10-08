@@ -52,5 +52,12 @@
   		<servlet-name>dwr-invoker</servlet-name>
   		<url-pattern>/dwr/*</url-pattern>
   	</servlet-mapping>
+  	
+  	<jsp-config>
+  		<taglib>
+  			<taglib-uri>/mytaglib</taglib-uri>
+  			<taglib-location>/WEB-INF/mytag.tld</taglib-location>
+  		</taglib>
+  	</jsp-config>
 
 </web-app>

@@ -24,7 +24,7 @@ public class LoginAction extends ActionSupport {
 	public String execute() throws Exception {
 		User user = userManager.login(username, password);
 		ActionContext.getContext().getSession().put("login", user);
-		return "back_index";
+		return SUCCESS;
 	}
 
 	public UserManager getUserManager() {

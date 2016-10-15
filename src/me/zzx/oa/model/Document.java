@@ -1,15 +1,20 @@
 package me.zzx.oa.model;
 
 import java.util.Date;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -48,6 +53,9 @@ public class Document {
 	
 	//流程实例标识
 	private long processInstanceId;
+	
+	//表单动态属性
+	private Map<String, DocumentProperty> props;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -128,6 +136,17 @@ public class Document {
 
 	public void setProcessInstanceId(long processInstanceId) {
 		this.processInstanceId = processInstanceId;
+	}
+
+	@ElementCollection
+	@CollectionTable(name="t_docprop", joinColumns=@JoinColumn(name="document_id"))
+	@MapKeyColumn(name="prop_name")
+	public Map<String, DocumentProperty> getProps() {
+		return props;
+	}
+
+	public void setProps(Map<String, DocumentProperty> props) {
+		this.props = props;
 	}
 	
 }

@@ -20,6 +20,10 @@ public class IndexAction extends ActionSupport {
 
 	private AclManager aclManager;
 	
+	public String execute() throws Exception {
+		return "back_index";
+	}
+	
 	public String outlook() throws Exception {
 		User user = (User) ActionContext.getContext().getSession().get("login");
 		List<Module> modules = aclManager.searchModules(user.getId());

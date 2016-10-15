@@ -11,8 +11,7 @@
 </head>
 <body bgColor=#dee7ff leftMargin=0 background="" topMargin=0
 	marginheight="0" marginwidth="0">
-	<table border=0 cellPadding=0 cellSpacing=0
-		borderColor=#ffffff bgColor=#dee7ff style="font-size: 10pt; margin: auto; width: 778; " >
+	<table border="0" cellPadding="0" cellSpacing="0" borderColor="#ffffff" bgColor="#dee7ff" style="font-size: 10pt; margin: auto; width: 778; " >
 		<tbody>
 			<tr height=35>
 				<td align=middle width=20 background=images/title_left.gif

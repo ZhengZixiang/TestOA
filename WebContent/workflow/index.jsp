@@ -1,29 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/common/common.jsp" %>
 
-<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="style/oa.css" rel="stylesheet" type="text/css">
-<script src="script/public.js"></script>
-<title>流程管理</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="style/oa.css" rel="stylesheet" type="text/css">
+	<script src="script/public.js"></script>
+	<title>流程管理</title>
 </head>
 <body bgcolor="#dee7ff" leftMargin=0 background="" topMargin="0" marginheight="0" marginwidth="0">
 	<table border="0" cellpadding="0" cellspacing="0" bordercolor="#ffffff" bgcolor="#dee7ff" style="font-size: 10pt; margin: auto; width: 778; " >
-		<tbody>
-			<tr height=35>
-				<td align="center" width="20" background="images/title_left.gif" bgcolor="#dee7ff"></td>
-				<td align="center" width="120" background="images/title_left.gif" bgColor="#dee7ff">
-					<font color="#f7f7f7">流程管理<font color="#FFFFFF">&nbsp;</font></font>
-				</td>
-				<td align="center" width="11" background="images/title_middle.gif" bgcolor="#dee7ff">
-					<font color="#f7f7f7">&nbsp;</font>
-				</td>
-				<td align="center" background="images/title_right.gif" bgcolor="#dee7ff"><font color="#f7f7f7">&nbsp;</font></td>
-			</tr>
-		</tbody>
+		<tr height=35>
+			<td align="center" width="20" background="images/title_left.gif" bgcolor="#dee7ff"></td>
+			<td align="center" width="120" background="images/title_left.gif" bgColor="#dee7ff">
+				<font color="#f7f7f7">流程管理<font color="#FFFFFF">&nbsp;</font></font>
+			</td>
+			<td align="center" width="11" background="images/title_middle.gif" bgcolor="#dee7ff">
+				<font color="#f7f7f7">&nbsp;</font>
+			</td>
+			<td align="center" background="images/title_right.gif" bgcolor="#dee7ff"><font color="#f7f7f7">&nbsp;</font></td>
+		</tr>
 	</table>
 	
 	<table width="778" border="0" align="center" cellpadding="0" cellSpacing="0" bordercolor="#ffffff" style="font-size: 10pt; margin: auto">

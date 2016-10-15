@@ -9,39 +9,31 @@
 <script src="script/public.js"></script>
 <title>用户管理</title>
 </head>
-<body bgColor=#dee7ff leftMargin=0 background="" topMargin=0
-	marginheight="0" marginwidth="0">
-	<table border=0 cellPadding=0 cellSpacing=0
-		borderColor=#ffffff bgColor=#dee7ff style="font-size: 10pt; margin: auto; width: 778; " >
+<body bgColor=#dee7ff leftMargin=0 background="" topMargin="0" marginheight="0" marginwidth="0">
+	<table border="0" cellPadding="0" cellSpacing="0" borderColor="#ffffff" bgColor="#dee7ff" style="font-size: 10pt; margin: auto; width: 778; " >
 		<tbody>
 			<tr height=35>
-				<td align=middle width=20 background=images/title_left.gif
-					bgColor=#dee7ff></td>
-				<td align=middle width=120 background=images/title_left.gif
-					bgColor=#dee7ff><font color=#f7f7f7>用户管理<font
-						color="#FFFFFF">&nbsp;</font></font></td>
-				<td align=middle width=11 background=images/title_middle.gif
-					bgColor=#dee7ff><font color=#f7f7f7>&nbsp;</font></td>
-				<td align=middle background=images/title_right.gif bgColor=#dee7ff><font
-					color=#f7f7f7>&nbsp;</font></td>
+				<td align="center" width="20" background="images/title_left.gif" bgColor="#dee7ff"></td>
+				<td align="center" width="120" background="images/title_left.gif" bgColor="#dee7ff">
+					<font color="#f7f7f7">用户管理<font color="#FFFFFF">&nbsp;</font></font></td>
+				<td align="center" width="11" background="images/title_middle.gif" bgColor="#dee7ff"><font color="#f7f7f7">&nbsp;</font></td>
+				<td align="center" background="images/title_right.gif" bgColor="#dee7ff"><font color="#f7f7f7">&nbsp;</font></td>
 			</tr>
 		</tbody>
 	</table>
-	<table width="778" border=0 align=center cellPadding=0 cellSpacing=0
-		borderColor=#ffffff style="font-size: 10pt; margin: auto">
+	<table width="778" border="0" align="center" cellPadding="0" cellSpacing="0" borderColor=#ffffff style="font-size: 10pt; margin: auto">
 		<tbody>
 			<tr>
-				<td width="82%" height=14 align=right vAlign=center noWrap></td>
-				<td width="18%" align=right vAlign=center noWrap></td>
+				<td width="82%" height="14" align="right" valign="middle" noWrap></td>
+				<td width="18%" align="right" valign="middle" noWrap></td>
 			</tr>
 			<tr>
-				<td height=14 align=right vAlign=center noWrap>
+				<td height="14" align="right" valign="middle" noWrap>
 					<!-- 在这里插入查询表单 -->
 				</td>
 			</tr>
 			<tr>
-				<td height=28 colspan="2" align=right vAlign=center noWrap
-					background=images/list_middle.jpg>&nbsp;&nbsp; <!-- 可以在这里插入分页导航条 -->
+				<td height="28" colspan="2" align="right" valign="middle" noWrap background="images/list_middle.jpg">&nbsp;&nbsp; <!-- 可以在这里插入分页导航条 -->
 				</td>
 			</tr>
 		</tbody>
@@ -101,11 +93,10 @@
 		</s:if>
 
 	</table>
-	<table width="778" border=0 align=center cellPadding=0 cellSpacing=0 borderColor=#ffffff style="font-size: 10pt">
+	<table width="778" border="0" align="center" cellPadding="0" cellSpacing="0" borderColor="#ffffff" style="font-size: 10pt">
 		<tbody>
 			<tr>
-				<td height=28 align=right vAlign=center noWrap
-					background=images/list_middle.jpg>&nbsp;&nbsp; 
+				<td height="28" align="right" vAlign="center" noWrap background="images/list_middle.jpg">&nbsp;&nbsp; 
 					<!-- 可以在这里插入分页导航条 -->
 					<pg:pager url="user" items="${ pager.total }" export="currentPage=pageNumber">
 						<pg:param name="parentId"/>

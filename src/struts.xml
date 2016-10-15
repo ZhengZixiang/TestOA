@@ -90,6 +90,7 @@
 		
 		<action name="login" class="loginAction">
 			<result name="back_index">/back_index.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
@@ -97,6 +98,40 @@
 		<action name="index" class="indexAction">
 			<result name="outlook">/outlook.jsp</result>
 			<result name="main">/main.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="workflow" class="workflowAction">
+			<result name="index">/workflow/index.jsp</result>
+			<result name="add_success" type="redirect">/workflow</result>
+			<result name="view_code">/workflow/view_code.jsp</result>
+			<result name="view_image">/workflow/view_image.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="document" class="documentAction">          
+			<result name="index">/document/index.jsp</result>
+			<result name="approved_list">/document/approved_list.jsp</result>
+			<result name="approving_list">/document/approving_list.jsp</result>
+			<result name="approve_input">/document/approve_input.jsp</result>
+			<result name="select_list">/document/select_list.jsp</result>
+			<result name="submit_input">/document/submit_input.jsp</result>
+			<result name="add_input">/document/add_input.jsp</result>
+			<result name="approve_history">/document/approve_history.jsp</result>
+			<result name="download" type="stream">
+				<!-- 文件对应的Action中的流对象 -->
+				<param name="inputName">is</param>
+				<!-- 指定文件名和显示方式 -->
+				<param name="contentDisposition">attachment;filename="${attachmentFileName}.docx"</param>
+				<!-- 指定文件类型，octest-stream是不限制类型 -->
+				<param name="contentType">application/octet-stream</param>
+				<!-- 指定下载文件的缓存大小 -->
+				<param name="bufferSize">1024</param>
+			</result>
 			<interceptor-ref name="loginInterceptor"></interceptor-ref>
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>

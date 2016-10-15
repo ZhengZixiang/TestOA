@@ -38,7 +38,7 @@
 				<td height=14 align=right vAlign=center noWrap>
 				</td>
 				<td height=14 align="left" vAlign=center noWrap>
-					<c:if test="${ mytag:hasPermission(login.id, 'role', 2) }">
+					<c:if test="${ mytag:hasPermission(login.id, 'role', 0) }">
 					<a href="#" onclick="openWin('role!addInput','addrole',600,200);">添加角色信息</a>
 					</c:if>
 				</td>

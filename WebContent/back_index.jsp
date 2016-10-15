@@ -1,31 +1,16 @@
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!--
- ---------------------------------------------------------------------------
- this script is copyright (c) 2001 by Michael Wallner!
- http://www.wallner-software.com
- mailto:dhtml@wallner-software.com
-
- you may use this script on web pages of your own
- you must not remove this copyright note!
-
- This script featured on Dynamic Drive (http://www.dynamicdrive.com)
- Visit http://www.dynamicdrive.com for full source to this script and more
- ---------------------------------------------------------------------------
--->
 <head>
-<meta http-equiv="content-type" content="text/html;charset=utf-8">
-<title>Outlook Like Bar Example - (c) 2001 www.wallner-software.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Web办公自动化系统</title>
 </head>
-
-  <frameset  cols = "130,*" frameborder=yes bordercolor=silver>
-     <frame src="index!outlook" name="links" scrolling="no"/>
-     <frame src="index!main" name="main" scrolling="auto"/>
-  </frameset> 
-
+<frameset cols="130,*" frameborder="yes" bordercolor="silver">
+	<frame src="index!outlook" name="links" scrolling="no">
+	<frame src="index!main" name="main" scrolling="auto">
+</frameset>
 <noframes>
-<body>
-</body>
-
+	<body></body>
 </noframes>
-
 </html>

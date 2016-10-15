@@ -2,54 +2,54 @@
 <InitDatas>
 	<Modules>
 		<Module name="个人办公" sn="personaloffice" url="" orderNo="10">
-			<Module name="我的办公桌" sn="myworkbeach" url="task.do?method=doesTask" orderNo="1010"/>
-			<Module name="我的便签" sn="notepad" url="notepad.do" orderNo="1020"/>
-			<Module name="我的任务" sn="mytask" url="user.do?method=mpInput" orderNo="1030"/>
-			<Module name="通信录" sn="addresslist" url="addresslist.do" orderNo="1040"/>
+			<Module name="我的办公桌" sn="myworkbeach" url="task!doesTask" orderNo="1010"/>
+			<Module name="我的便签" sn="notepad" url="notepad" orderNo="1020"/>
+			<Module name="我的任务" sn="mytask" url="user!mpInput" orderNo="1030"/>
+			<Module name="通信录" sn="addresslist" url="addresslist" orderNo="1040"/>
 		</Module>	 
 		<Module name="公文管理" sn="doc" url="" orderNo="20">
-			<Module name="公文维护" sn="document" url="document.do" orderNo="2010"/>
-			<Module name="归档处理" sn="arch" url="document.do?method=searchAllFinishedDocuments" orderNo="2020"/>
+			<Module name="公文维护" sn="document" url="document" orderNo="2010"/>
+			<Module name="归档处理" sn="arch" url="document!searchAllFinishedDocuments" orderNo="2020"/>
 		</Module>
 		<Module name="公共信息" sn="pubinfo" url="" orderNo="30">
-			<Module name="信息管理" sn="infomgr" url="info.do" orderNo="3010"/>
+			<Module name="信息管理" sn="infomgr" url="info" orderNo="3010"/>
 		</Module>
 		<Module name="行政办公" sn="puboffice" url="" orderNo="40">
-			<Module name="会议管理" sn="meeting" url="meetingRoom.do" orderNo="4010"/>
-			<Module name="资产管理" sn="asset" url="asset.do" orderNo="4020"/>
-			<Module name="用品管理" sn="usething" url="usething.do" orderNo="4030"/>
-			<Module name="车辆管理" sn="car" url="car.do" orderNo="4040"/>
-			<Module name="图书管理" sn="book" url="book.do" orderNo="4050"/>
+			<Module name="会议管理" sn="meeting" url="meetingRoom" orderNo="4010"/>
+			<Module name="资产管理" sn="asset" url="asset" orderNo="4020"/>
+			<Module name="用品管理" sn="usething" url="usething" orderNo="4030"/>
+			<Module name="车辆管理" sn="car" url="car" orderNo="4040"/>
+			<Module name="图书管理" sn="book" url="book" orderNo="4050"/>
 		</Module>
 		<Module name="消息管理" sn="mail" url="" orderNo="50">
-			<Module name="收件箱" sn="inbox" url="message.do?method=inbox" orderNo="5010"/>
-			<Module name="发件箱" sn="outbox" url="message.do?method=outbox" orderNo="5020"/>
-			<Module name="垃圾箱" sn="trash" url="message.do?method=trash" orderNo="5030"/>
-			<Module name="聊天记录" sn="record" url="message.do?method=record" orderNo="5040"/>
+			<Module name="收件箱" sn="inbox" url="message!inbox" orderNo="5010"/>
+			<Module name="发件箱" sn="outbox" url="message!outbox" orderNo="5020"/>
+			<Module name="垃圾箱" sn="trash" url="message!trash" orderNo="5030"/>
+			<Module name="聊天记录" sn="record" url="message!record" orderNo="5040"/>
 		</Module>		
 		<Module name="工作流程" sn="workflow" url="" orderNo="60">
-			<Module name="流程管理" sn="flow" url="workflow.do" orderNo="6010"/>
-			<Module name="表单定义" sn="formdef" url="flowform.do" orderNo="6020"/>
+			<Module name="流程管理" sn="flow" url="workflow" orderNo="6010"/>
+			<Module name="表单定义" sn="formdef" url="flowform" orderNo="6020"/>
 		</Module>
 		<Module name="组织管理" sn="orgmgr" url="" orderNo="70">
-			<Module name="机构管理" sn="org" url="org.do" orderNo="7010"/>
-			<Module name="人员管理" sn="person" url="person.do" orderNo="7020"/>
+			<Module name="机构管理" sn="org" url="org?parentId=0" orderNo="7010"/>
+			<Module name="人员管理" sn="person" url="person" orderNo="7020"/>
 		</Module>
 		<Module name="权限管理" sn="auth" url="" orderNo="80">
-			<Module name="模块管理" sn="module" url="module.do" orderNo="8010"/>
-			<Module name="角色管理" sn="role" url="role.do" orderNo="8020"/>
-			<Module name="用户管理" sn="user" url="user.do" orderNo="8030"/>
+			<Module name="模块管理" sn="module" url="module?parentId=0" orderNo="8010"/>
+			<Module name="角色管理" sn="role" url="role" orderNo="8020"/>
+			<Module name="用户管理" sn="user" url="user" orderNo="8030"/>
 		</Module>
 		<Module name="系统管理" sn="sytemmgr" url="" orderNo="90">
-			<Module name="密码修改" sn="chgpsw" url="user.do?method=chgpsw" orderNo="9010"/>
-			<Module name="代码定义" sn="codedef" url="codedef.do" orderNo="9020"/>
-			<Module name="系统初始化" sn="systeminit" url="systeminit.do" orderNo="9030"/>
+			<Module name="密码修改" sn="chgpsw" url="user!chgpsw" orderNo="9010"/>
+			<Module name="代码定义" sn="codedef" url="codedef" orderNo="9020"/>
+			<Module name="系统初始化" sn="systeminit" url="systeminit" orderNo="9030"/>
 		</Module>
 		<Module name="人事档案" sn="employee" url="" orderNo="100">
-			<Module name="人员履历" sn="employee1" url="employee.do" orderNo="10010"/>
-			<Module name="转正申请" sn="employee2" url="employee.do" orderNo="10020"/>
-			<Module name="离职申请" sn="employee3" url="employee.do" orderNo="10030"/>
-			<Module name="员工考勤" sn="employee4" url="employee.do" orderNo="10040"/>
+			<Module name="人员履历" sn="employee1" url="employee!expr" orderNo="10010"/>
+			<Module name="转正申请" sn="employee2" url="employee!toRegular" orderNo="10020"/>
+			<Module name="离职申请" sn="employee3" url="employee!dimission" orderNo="10030"/>
+			<Module name="员工考勤" sn="employee4" url="employee!attence" orderNo="10040"/>
 		</Module>
 	</Modules>
 	<Roles>

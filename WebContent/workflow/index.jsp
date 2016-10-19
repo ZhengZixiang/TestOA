@@ -49,8 +49,8 @@
 			<td width="50%" height="37" align="center"><b>相关操作</b></td>
 		</tr>
 		<!-- 列表数据栏 -->
-		<s:if test="%{workflows == null}">
-			<s:iterator value="workflows" id="workflow">
+		<s:if test="%{#workflows != null}">
+			<s:iterator value="%{#workflows}" id="workflow">
 				<tr bgcolor="#EFF3F7" class="tableBody1"
 					onmouseover="this.bgColor = '#DEE7FF';"
 					onmouseout="this.bgColor='#EFF3F7';">
@@ -61,13 +61,14 @@
 					<td align="center">
 						<c:if test="${ mytag:hasPermission(login.id, 'workflow', 3) }">
 						<a href="#" onclick="del('user!delete?user.id=<s:property value="#workflow.id"/>');">删除流程</a>&nbsp;
-						</c:if>  
+						</c:if>
+						<a href="#" onclick="openWin('form!addFormInput?workflow.id=<s:property value="#workflow.id"/>')">定义表单</a>
 					</td>
 				</tr>
 			</s:iterator>
 		</s:if>
 		<!-- 在列表数据为空的时候，要显示的提示信息 -->
-		<s:if test="%{workflows==null || workflow.size() == 0}">
+		<s:if test="%{#workflows==null || #workflows.size() == 0}">
 			<tr>
 				<td colspan="7" align="center" bgcolor="#EFF3F7" class="tableBody1"
 					onmouseover="this.bgColor = '#DEE7FF';"
@@ -95,7 +96,6 @@
 		</table>
 	</form>
 	</c:if>  
-
 </body>
 
 </html>

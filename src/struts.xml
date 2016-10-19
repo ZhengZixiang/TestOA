@@ -136,6 +136,16 @@
 			<interceptor-ref name="seInterceptor"></interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
+		
+		<action name="form" class="formAction">
+			<result name="index">/form/index.jsp</result>
+			<result name="add_field_input">/form/add_field_input.jsp</result>
+			<result name="add_form_input">/form/add_form_input.jsp</result>
+			<result name="add_item_input">/form/add_item_input.jsp</result>
+			<interceptor-ref name="loginInterceptor"></interceptor-ref>
+			<interceptor-ref name="seInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
 	</package>
 
 </struts>

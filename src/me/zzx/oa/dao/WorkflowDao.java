@@ -16,6 +16,4 @@ public interface WorkflowDao {
 
 	public List<Workflow> searchWorkflows();
 
-	public void deleteProcessInstance(long processInstanceId);
-
 }

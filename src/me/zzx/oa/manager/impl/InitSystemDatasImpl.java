@@ -13,6 +13,8 @@ import org.dom4j.io.SAXReader;
 import org.springframework.stereotype.Service;
 
 import me.zzx.oa.dao.AclDao;
+import me.zzx.oa.dao.FieldInputDao;
+import me.zzx.oa.dao.FieldTypeDao;
 import me.zzx.oa.dao.ModuleDao;
 import me.zzx.oa.dao.OrgDao;
 import me.zzx.oa.dao.PersonDao;
@@ -21,6 +23,8 @@ import me.zzx.oa.dao.UserDao;
 import me.zzx.oa.interceptor.SystemExceptionInterceptor;
 import me.zzx.oa.manager.InitSystemDatas;
 import me.zzx.oa.model.AccessControlList;
+import me.zzx.oa.model.FieldInput;
+import me.zzx.oa.model.FieldType;
 import me.zzx.oa.model.Module;
 import me.zzx.oa.model.Organization;
 import me.zzx.oa.model.PermissionType;
@@ -44,6 +48,10 @@ public class InitSystemDatasImpl implements InitSystemDatas {
 	
 	private UserDao userDao;
 	
+	private FieldInputDao inputDao;
+	
+	private FieldTypeDao typeDao;
+	
 	private Log log = LogFactory.getLog(SystemExceptionInterceptor.class);
 	
 	private String fileName;
@@ -64,12 +72,30 @@ public class InitSystemDatasImpl implements InitSystemDatas {
 			importModules(document.selectNodes("//Modules/Module"), null);
 			importRolesAndAcl(document.selectNodes("//Roles/Role"));
 			importOrgAndPerson(document.selectNodes("//Organizations/Org"), null);
+			importFieldDefinition(document.selectNodes("//FieldInputs/FieldInput"), document.selectNodes("//FieldTypes/FieldType"));
 		} catch (DocumentException e) {
 			e.printStackTrace();
 			throw new SystemException("error.datas.init");
 		}
 	}
 
+	private void importFieldDefinition(List fieldInputs, List fieldTypes) {
+		for(Object o : fieldInputs) {
+			Element e = (Element) o;
+			FieldInput input = new FieldInput();
+			input.setTemplate(e.attributeValue("template"));
+			input.setName(e.attributeValue("name"));
+			inputDao.save(input);
+		}
+		for(Object o : fieldTypes) {
+			Element e = (Element) o;
+			FieldType type = new FieldType();
+			type.setType(e.attributeValue("type"));
+			type.setName(e.attributeValue("name"));
+			typeDao.save(type);
+		}
+	}
+	
 	private void importOrgAndPerson(List selectNodes, Organization parent) {
 		for(Object o : selectNodes) {
 			Element e = (Element) o;
@@ -196,6 +222,24 @@ public class InitSystemDatasImpl implements InitSystemDatas {
 	@Resource
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
+	}
+
+	public FieldInputDao getInputDao() {
+		return inputDao;
+	}
+
+	@Resource
+	public void setInputDao(FieldInputDao inputDao) {
+		this.inputDao = inputDao;
+	}
+
+	public FieldTypeDao getTypeDao() {
+		return typeDao;
+	}
+
+	@Resource
+	public void setTypeDao(FieldTypeDao typeDao) {
+		this.typeDao = typeDao;
 	}
 
 }

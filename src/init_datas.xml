@@ -29,7 +29,7 @@
 		</Module>		
 		<Module name="工作流程" sn="workflow" url="" orderNo="60">
 			<Module name="流程管理" sn="flow" url="workflow" orderNo="6010"/>
-			<Module name="表单定义" sn="formdef" url="flowform" orderNo="6020"/>
+			<Module name="表单定义" sn="formdef" url="form" orderNo="6020"/>
 		</Module>
 		<Module name="组织管理" sn="orgmgr" url="" orderNo="70">
 			<Module name="机构管理" sn="org" url="org?parentId=0" orderNo="7010"/>
@@ -264,17 +264,18 @@
 			<Org name="广州研发中心"></Org>
 		</Org>
 	</Organizations>
+	
 	<FieldInputs>
 		<FieldInput name="文本输入框" template="text.ftl"/>
 		<FieldInput name="复选框" template="checkbox.ftl"/>
 		<FieldInput name="单选框" template="radio.ftl"/>
 		<FieldInput name="下拉列表框" template="select.ftl"/>
-		<FieldInput name="文件输入框" template="file.ftl"/>
+		<!-- <FieldInput name="文件输入框" template="file.ftl"/> -->
 	</FieldInputs>
 	<FieldTypes>
-		<FieldType name="字符串" type="java_lang_String"/>
-		<FieldType name="整数" type="java_lang_Integer"/>
-		<FieldType name="日期" type="java_util_Date"/>
-		<FieldType name="文件" type="java_io_File"/>
+		<FieldType name="字符串" type="java.lang.String"/>
+		<FieldType name="整数" type="java.lang.Integer"/>
+		<FieldType name="日期" type="java.util.Date"/>
+		<FieldType name="文件" type="java.io.File"/>
 	</FieldTypes>
 </InitDatas>

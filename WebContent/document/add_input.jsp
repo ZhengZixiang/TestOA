@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ include file="/common/common.jsp" %>
+<%@ page import="com.opensymphony.xwork2.ActionContext" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//Dtd HTML 4.01 transitional//EN" "http://www.w3.role/tr/html4/loose.dtd">
 <html>
@@ -35,6 +36,7 @@
 									<td class="tdEditContent"><input type="file" name="attachment"/></td>
 								</tr>
 							</table>
+							${mytag:form(wfid)}
 						</td>
 					</tr>
 				</tbody>

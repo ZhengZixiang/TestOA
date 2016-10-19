@@ -53,11 +53,4 @@ public class WorkflowDaoImpl implements WorkflowDao {
 				.createQuery("from Workflow", Workflow.class)
 				.getResultList();
 	}
-
-	@Override
-	public void deleteProcessInstance(long processInstanceId) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
